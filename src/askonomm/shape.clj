@@ -7,7 +7,9 @@
     [reitit.ring.middleware.muuntaja :as muuntaja]
     [reitit.ring.middleware.parameters :as parameters]
     [muuntaja.core :as m]
-    [askonomm.routes.site :as routes.site])
+    [dotenv :refer [env]]
+    [askonomm.routes.site :as routes.site]
+    [askonomm.migrator :as migrator])
   (:gen-class))
 
 (def app
@@ -21,9 +23,10 @@
                            muuntaja/format-response-middleware
                            rrc/coerce-response-middleware]}})))
       
-(defn run
-  "I don't do a whole lot ... yet."
-  [_]
-  (run-jetty app {:port 3999
-                  :join? false}))
+(defn run [_]
+  (if (nil? (env "DB_URL"))
+    (println "DB_URL environment variable is not set, cannot continue.")
+    (do (migrator/run-migrations)
+        (run-jetty app {:port 3999
+                        :join? false}))))
   

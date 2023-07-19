@@ -26,3 +26,5 @@
 /checkouts
 /classes
 /target
+.env
+shape.db
