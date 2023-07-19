@@ -9,13 +9,17 @@
     [muuntaja.core :as m]
     [dotenv :refer [env]]
     [shape.routes.site :as routes.site]
+    [shape.routes.admin :as routes.admin]
     [shape.migrator :as migrator])
   (:gen-class))
+
+(prn (into [] (concat routes.admin/routes routes.site/routes)))
 
 (def app
   (ring/ring-handler
     (ring/router
-      (concat routes.site/routes)
+      [["/" routes.site/routes]
+       ["/admin" routes.admin/routes]]
       {:data {:coercion reitit.coercion.spec/coercion
               :muuntaja m/instance
               :middleware [parameters/parameters-middleware
