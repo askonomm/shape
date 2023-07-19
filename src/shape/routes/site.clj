@@ -4,7 +4,7 @@
 
 (def ^:private home 
   {:get {:responses {200 {:body string?}}
-              :handler handlers.site.home/handler}})
+         :handler handlers.site.home/handler}})
 
 (def routes
   [["" home]])      
