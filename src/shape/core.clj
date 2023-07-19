@@ -2,6 +2,7 @@
   (:require
     [ring.adapter.jetty :refer [run-jetty]]
     [ring.middleware.reload :refer [wrap-reload]]
+    [ring.middleware.cookies :refer [wrap-cookies]]
     [reitit.ring :as ring]
     [reitit.coercion.spec]
     [reitit.ring.coercion :as rrc]
@@ -15,16 +16,18 @@
   (:gen-class))
 
 (def app
-  (ring/ring-handler
-    (ring/router
-      [["/" routes.site/routes]
-       ["/admin" routes.admin/routes]]
-      {:data {:coercion reitit.coercion.spec/coercion
-              :muuntaja m/instance
-              :middleware [parameters/parameters-middleware
-                           rrc/coerce-request-middleware
-                           muuntaja/format-response-middleware
-                           rrc/coerce-response-middleware]}})))
+  (-> (ring/ring-handler
+        (ring/router
+          [["/" routes.site/routes]
+           ["/admin" routes.admin/routes]]
+          {:data {:coercion reitit.coercion.spec/coercion
+                  :muuntaja m/instance
+                  :middleware [parameters/parameters-middleware
+                               rrc/coerce-request-middleware
+                               muuntaja/format-response-middleware
+                               rrc/coerce-response-middleware]}}))
+      wrap-cookies))
+                           
       
 (defn run [_]
   (if (nil? (env "DB_URL"))
