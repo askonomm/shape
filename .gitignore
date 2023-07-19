@@ -26,5 +26,6 @@
 /checkouts
 /classes
 /target
+.clj-kondo/
 .env
 shape.db

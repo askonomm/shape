@@ -1,6 +1,6 @@
-(ns askonomm.routes.site
+(ns shape.routes.site
   (:require
-    [askonomm.handlers.site.home :as handlers.site.home]))
+    [shape.handlers.site.home :as handlers.site.home]))
 
 (def routes
   ["/" {:get {:responses {200 {:body string?}}}

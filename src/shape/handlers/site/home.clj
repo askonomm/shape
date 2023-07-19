@@ -1,4 +1,4 @@
-(ns askonomm.handlers.site.home)
+(ns shape.handlers.site.home)
 
 (defn handler [request]
   {:status 200

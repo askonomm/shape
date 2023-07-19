@@ -1,4 +1,4 @@
-(ns askonomm.data
+(ns shape.data
   (:require
     [next.jdbc :as jdbc]
     [dotenv :refer [env]]))

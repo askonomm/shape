@@ -1,4 +1,4 @@
-(ns askonomm.shape
+(ns shape.core
   (:require
     [ring.adapter.jetty :refer [run-jetty]]
     [reitit.ring :as ring]
@@ -8,8 +8,8 @@
     [reitit.ring.middleware.parameters :as parameters]
     [muuntaja.core :as m]
     [dotenv :refer [env]]
-    [askonomm.routes.site :as routes.site]
-    [askonomm.migrator :as migrator])
+    [shape.routes.site :as routes.site]
+    [shape.migrator :as migrator])
   (:gen-class))
 
 (def app

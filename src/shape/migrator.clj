@@ -1,4 +1,4 @@
-(ns askonomm.migrator
+(ns shape.migrator
   (:require
     [dotenv :refer [env]]
     [ragtime.jdbc :as jdbc]

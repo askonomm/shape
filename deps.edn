@@ -8,8 +8,8 @@
         lynxeyes/dotenv {:mvn/version "1.1.0"}
         dev.weavejester/ragtime {:mvn/version "0.9.3"}}      
  :aliases
- {:run-m {:main-opts ["-m" "askonomm.shape"]}
-  :run-x {:ns-default askonomm.shape
+ {:run-m {:main-opts ["-m" "shape.core"]}
+  :run-x {:ns-default shape.core
           :exec-fn run
           :exec-args {:name "Clojure"}}
   :build {:deps {io.github.clojure/tools.build
