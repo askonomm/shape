@@ -1,6 +1,7 @@
 (ns shape.core
   (:require
     [ring.adapter.jetty :refer [run-jetty]]
+    [ring.middleware.reload :refer [wrap-reload]]
     [reitit.ring :as ring]
     [reitit.coercion.spec]
     [reitit.ring.coercion :as rrc]
@@ -12,8 +13,6 @@
     [shape.routes.admin :as routes.admin]
     [shape.migrator :as migrator])
   (:gen-class))
-
-(prn (into [] (concat routes.admin/routes routes.site/routes)))
 
 (def app
   (ring/ring-handler
@@ -31,6 +30,6 @@
   (if (nil? (env "DB_URL"))
     (println "DB_URL environment variable is not set, cannot continue.")
     (do (migrator/run-migrations)
-        (run-jetty app {:port 3999
-                        :join? false}))))
+        (run-jetty (wrap-reload #'app) {:port 3999
+                                        :join? false}))))
   
