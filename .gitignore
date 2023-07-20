@@ -29,3 +29,5 @@
 .clj-kondo/
 .env
 shape.db
+/.idea/
+/.lsp/
