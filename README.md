@@ -35,3 +35,4 @@ And that's it, pretty straight-forward and this alone should enable the creation
 - [ ] Content creation in admin panel
 - [ ] Partials implementation
 - [ ] Pages creation in admin panel
+- [ ] Default theme
