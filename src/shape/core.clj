@@ -3,6 +3,8 @@
     [ring.adapter.jetty :refer [run-jetty]]
     [ring.middleware.reload :refer [wrap-reload]]
     [ring.middleware.cookies :refer [wrap-cookies]]
+    [ring.middleware.anti-forgery :refer [wrap-anti-forgery]]
+    [ring.middleware.session :refer [wrap-session]]
     [reitit.ring :as ring]
     [reitit.coercion.spec]
     [reitit.ring.coercion :as rrc]
@@ -25,10 +27,12 @@
                   :middleware [parameters/parameters-middleware
                                rrc/coerce-request-middleware
                                muuntaja/format-response-middleware
-                               rrc/coerce-response-middleware]}}))
-      wrap-cookies))
+                               rrc/coerce-response-middleware]}})
+        {:middleware [wrap-session
+                      wrap-anti-forgery
+                      wrap-cookies]})))
                            
-      
+#_{:clj-kondo/ignore [:clojure-lsp/unused-public-var]}
 (defn run [_]
   (if (nil? (env "DB_URL"))
     (println "DB_URL environment variable is not set, cannot continue.")
