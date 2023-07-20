@@ -1,6 +1,9 @@
+<img src="https://github.com/askonomm/shape/assets/84135165/4297d93e-9a9e-4ba5-b6aa-72d6aef35930" width="80" />
+
 # Shape CMS
 
-Shape is a content management system, written in Clojure. **Currently in progress, docs will appear as things get created.** 
+Shape is a content management system, written in Clojure. **Currently in progress, docs will appear as things get created.**
+
 
 ## Installation
 
