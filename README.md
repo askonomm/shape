@@ -22,6 +22,8 @@ And so I'm building a CMS like that.
 
 The idea is quite simple; at the heart of it all are **Content Shapes**, which can be your information pages, blog posts, shop products, whatever it is - you can create infinite amount of these by putting together different data types and naming them (eg text for title, image for thumbnail, number for currency, etc). This lays out the data architecture of the site and is what the end-users will be creating. 
 
+What the end-users will spend time with is **Content**, which are composed out of the **Content Shapes** you've created, allowing the user to easily manage content with different data structures from the admin panel.
+
 Then there are **Partials**, these are pure-Clojure functions that spit out HTML (via Hiccup, for example). This can be anything you want, and it enables the use of a DSL to fetch data from the previously mentioned **Content Shapes**. Could be a Product View, could be a Blog Post View, whatever you want, these are the building blocks of the website. 
 
 And at last there are **Pages**. Pages are composed out of **Partials**, and they are attached to a URL. The URL could be static, like `/about`, or it could be dynamic like `/blog/{post}`. **Partials** will also have a way to tell what the `{post}` is in case of a dynamic URL, so that you could fetch the right data for your Partial. 
