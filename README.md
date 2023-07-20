@@ -12,7 +12,7 @@ clj -X shape.core/run
 ```
 
 Then fire up your browser and visit `localhost:3999/admin`, this should automatically create the SQLite database, and then 
-direct you to the setup page (which doesn't yet do anything). 
+direct you to the setup page where you can create your account, after which it will redirect you to the admin panel (which is currently empty).
 
 ## The idea
 
