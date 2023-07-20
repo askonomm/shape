@@ -1,5 +1,6 @@
 (ns shape.middlewares
   (:require
+    [ring.middleware.cookies :refer [cookies-request]]
     [shape.data :as data]))
 
 (defn is-authenticated?
@@ -8,7 +9,7 @@
   Login page."
   [handler]
   (fn [request]
-    (if-let [token (get-in request [:cookies "_shape_token"])]
+    (if-let [token (get-in (cookies-request request) [:cookies "_shape_token" :value])]
       (if (data/user-by-token token)
         (handler request)
         {:status 302

@@ -3,7 +3,7 @@
     [hiccup.page :refer [html5]]
     [ring.util.anti-forgery :refer [anti-forgery-field]])) 
 
-(defn view-handler [request]
+(defn view-handler [_]
   {:status 200
    :headers {"Content-Type" "text/html"}
    :body (html5 {}
@@ -16,6 +16,5 @@
             [:button {:type "submit"} "Login"]])})
  
 (defn action-handler [request]
-  (prn request)
   {:status 200
    :body ""})

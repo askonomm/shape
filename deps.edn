@@ -8,7 +8,8 @@
         org.xerial/sqlite-jdbc {:mvn/version "3.42.0.0"}
         lynxeyes/dotenv {:mvn/version "1.1.0"}
         dev.weavejester/ragtime {:mvn/version "0.9.3"}
-        hiccup/hiccup {:mvn/version "2.0.0-RC1"}}      
+        hiccup/hiccup {:mvn/version "2.0.0-RC1"}
+        crypto-password/crypto-password {:mvn/version "0.3.0"}}
  :aliases
  {:run-m {:main-opts ["-m" "shape.core"]}
   :run-x {:ns-default shape.core
