@@ -4,17 +4,23 @@
 
 Shape is a content management system, written in Clojure. **Currently in progress, docs will appear as things get created.**
 
-
 ## Installation
 
-All you need to run Shape is the presence of Clojure in your system (meaning the `clj` CLI tool and Java), and then cloning
-the repo to wherever you want, and running:
+### Prerequisites
+
+- Have Clojure CLI tool installed (namely `clj` CLI tool)
+- Have Java installed
+- Set-up a environment variable `DB_URL` which points to a SQL database (can be SQLite as well)
+
+### Run Shape
+
+All you need is to execute this command in the folder where Shape's code is:
 
 ```bash
 clj -X shape.core/run
 ```
 
-Then fire up your browser and visit `localhost:3999/admin`, this should automatically create the SQLite database, and then 
+Then fire up your browser and visit `localhost:3999/admin`, this should automatically set-up the DB schema , and then 
 direct you to the setup page where you can create your account, after which it will redirect you to the admin panel (which is currently empty).
 
 ## The idea
