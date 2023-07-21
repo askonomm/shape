@@ -2,7 +2,6 @@
   (:require
     [clojure.string :as string]
     [ring.util.anti-forgery :refer [anti-forgery-field]]
-    [ring.middleware.cookies :refer [cookies-response]]
     [hiccup.page :refer [html5]]
     [crypto.password.bcrypt :as password]
     [shape.data :as data]))
