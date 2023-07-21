@@ -4,7 +4,9 @@
     [ring.util.anti-forgery :refer [anti-forgery-field]]
     [hiccup.page :refer [html5]]
     [crypto.password.bcrypt :as password]
-    [shape.data :as data]))
+    [shape.data :as data]
+    [shape.handlers.utils :refer [->redirect ->set-cookie]]
+    [shape.utils :refer [->merge]]))
 
 (defn view-handler
   [request]
@@ -24,6 +26,12 @@
                       :name "password"}]
              [:button {:type "submit"} "Create account and sign in"]]])})
 
+(defn- create-user-and-set-token! [email password token]
+  (let [user-id (data/create-user! {:email email
+                                    :password (password/encrypt password)
+                                    :role "developer"})]
+    (data/set-user-token! user-id token)))
+
 (defn action-handler
   [request]
   (let [email (get-in request [:form-params "email"])
@@ -37,11 +45,7 @@
       (view-handler (assoc request :shape-error "Password is required."))
 
       :else
-      (do (-> (data/create-user! {:email email
-                                  :password (password/encrypt password)
-                                  :role "developer"})
-              (data/set-user-token! token))
-          {:status 302
-           :headers {"Location" "/admin"
-                     "Set-Cookie" (str "_shape_token=" token "; max-age=2592000000; path=/")}
-           :body ""}))))
+      (do
+        (create-user-and-set-token! email password token)
+        (->merge (->redirect "/admin")
+                 (->set-cookie "_shape_token" token))))))
