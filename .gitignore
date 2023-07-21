@@ -31,3 +31,4 @@
 shape.db
 /.idea/
 /.lsp/
+.DS_Store

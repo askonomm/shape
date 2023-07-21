@@ -5,6 +5,7 @@
     [ring.middleware.cookies :refer [wrap-cookies]]
     [ring.middleware.anti-forgery :refer [wrap-anti-forgery]]
     [ring.middleware.session :refer [wrap-session]]
+    [ring.middleware.resource :refer [wrap-resource]]
     [reitit.ring :as ring]
     [reitit.coercion.spec]
     [reitit.ring.coercion :as rrc]
@@ -18,25 +19,29 @@
   (:gen-class))
 
 (def app
-  (-> (ring/ring-handler
-        (ring/router
-          [["/" routes.site/routes]
-           ["/admin" routes.admin/routes]]
-          {:data {:coercion reitit.coercion.spec/coercion
-                  :muuntaja m/instance
-                  :middleware [parameters/parameters-middleware
-                               rrc/coerce-request-middleware
-                               muuntaja/format-response-middleware
-                               rrc/coerce-response-middleware]}})
-        {:middleware [wrap-session
-                      wrap-anti-forgery
-                      wrap-cookies]})))
-                           
+  (ring/ring-handler
+    (ring/router
+      [["/" routes.site/routes]
+       ["/admin" routes.admin/routes]]
+      {:data {:coercion reitit.coercion.spec/coercion
+              :muuntaja m/instance
+              :middleware [parameters/parameters-middleware
+                           rrc/coerce-request-middleware
+                           muuntaja/format-response-middleware
+                           rrc/coerce-response-middleware]}})
+    {:middleware [wrap-session
+                  wrap-anti-forgery
+                  wrap-cookies]}))
+
+(def handler
+  (-> app
+      (wrap-resource "public")))
+
 #_{:clj-kondo/ignore [:clojure-lsp/unused-public-var]}
 (defn run [_]
   (if (nil? (env "DB_URL"))
     (println "DB_URL environment variable is not set, cannot continue.")
     (do (migrator/run-migrations)
-        (run-jetty (wrap-reload #'app) {:port 3999
-                                        :join? false}))))
+        (run-jetty (wrap-reload #'handler) {:port 3999
+                                            :join? false}))))
   
