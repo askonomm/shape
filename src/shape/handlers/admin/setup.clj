@@ -31,12 +31,10 @@
         password (get-in request [:form-params "password"])
         token (str (random-uuid))]
     (cond
-      (or (nil? email)
-          (string/blank? email))
+      (string/blank? email)
       (view-handler (assoc request :shape-error "E-mail is required."))
 
-      (or (nil? password)
-          (string/blank? password))
+      (string/blank? password)
       (view-handler (assoc request :shape-error "Password is required."))
 
       :else
