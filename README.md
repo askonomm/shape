@@ -11,6 +11,7 @@ Shape is a content management system, written in Clojure. **Currently in progres
 - Have Clojure CLI tool installed (namely `clj` CLI tool)
 - Have Java installed
 - Set-up a environment variable `DB_URL` which points to a SQL database (can be SQLite as well)
+  - Note that you can set-up environment variables by creating a `.env` file as well.
 
 ### Run Shape
 
