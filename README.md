@@ -21,8 +21,7 @@ All you need is to execute this command in the folder where Shape's code is:
 clj -X shape.core/run
 ```
 
-Then fire up your browser and visit `localhost:3999/admin`, this should automatically set-up the DB schema , and then 
-direct you to the setup page where you can create your account, after which it will redirect you to the admin panel (which is currently empty).
+By running Shape the first time, it will automatically set-up a DB schema automatically. Then fire up your browser and visit `localhost:3999/admin`, this should direct you to the setup page where you can create your account, after which it will redirect you to the admin panel (which is currently empty).
 
 ## The idea
 
