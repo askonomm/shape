@@ -2,13 +2,12 @@
   (:require
     [clojure.string :as string]
     [ring.util.anti-forgery :refer [anti-forgery-field]]
-    [crypto.password.bcrypt :as password]
     [shape.data :as data]
     [shape.handlers.utils :refer [->redirect ->set-cookie ->page]]
     [shape.utils :refer [->merge]]))
 
 (defn- view-handler-page [request]
-  [:div.setup-content
+  [:div.wall-content
    [:div.logo]
    [:h2 "Welcome, stranger."]
    [:p "Let's get to know each other."]
@@ -18,12 +17,12 @@
       (anti-forgery-field)
       [:label "E-mail"
        [:input {:type "email"
-                :placeholder "E-mail"
+                :placeholder "you@somewhere.com"
                 :value (-> request :remembered :email)
                 :name "email"}]]
       [:label "Password"
        [:input {:type "password"
-                :placeholder "Password"
+                :placeholder ""
                 :name "password"}]]
       [:button {:type "submit"
                 :class "primary"}
@@ -35,12 +34,12 @@
    :headers {"Content-Type" "text/html"}
    :body (->page
            (view-handler-page request)
-           {:css ["setup"]
-            :body-class "setup"})})
+           {:css ["wall"]
+            :body-class "wall"})})
 
 (defn- create-user-and-set-token! [email password token]
   (let [user-id (data/create-user! {:email email
-                                    :password (password/encrypt password)
+                                    :password password
                                     :role "developer"})]
     (data/set-user-token! user-id token)))
 
@@ -51,9 +50,8 @@
         token (str (random-uuid))]
     (cond
       (string/blank? email)
-      (view-handler (-> request
-                        (assoc :error "E-mail is required.")
-                        (assoc-in [:remembered :email] email)))
+      (view-handler (assoc request :error "E-mail is required."))
+                     
 
       (string/blank? password)
       (view-handler (-> request
