@@ -21,6 +21,7 @@ button.primary {
     font-weight: 600;
     color: #fff;
     background: var(--primary-color);
+    box-shadow: 2px 2px 0px #ddd;
     border: 2px solid var(--primary-color);
     border-radius: 25px;
     transition: all 0.05s ease-in-out;
@@ -30,10 +31,13 @@ button.primary {
 
 button.primary:hover {
     color: var(--primary-color);
+    text-shadow: 0px 1px 0px rgba(255,255,255,.5);
     background: var(--brand-color-light);
+    box-shadow: inset 3px 3px 0px rgba(0,0,0,.15), 2px 2px 0px #ddd;
 }
 
 input {
+    box-shadow: inset -2px 2px 0px #ddd;
     border: 2px solid #111;
     border-radius: 6px;
     padding-left: 15px;

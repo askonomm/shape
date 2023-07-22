@@ -35,7 +35,7 @@ form {
     width: 350px;
     text-align: left;
     background: #fff;
-    box-shadow: 0px 1px 8px rgba(0,0,0,.035);
+    box-shadow: 2px 2px 0px #ddd;
     border: 2px solid #111;
     border-radius: 6px;
     padding: 25px;
