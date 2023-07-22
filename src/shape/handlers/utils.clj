@@ -7,7 +7,7 @@
    :headers {"Location" to}})
 
 (defn ->set-cookie [name value]
-  {:headers {"Set-Cookie" (str name "=" value ")}}); max-age=2592000000; path=/")}})
+  {:headers {"Set-Cookie" (str name "=" value "; max-age=2592000000; path=/")}})
 
 (defn ->page [content opts]
   (html5
