@@ -45,8 +45,8 @@ form {
 form .error {
     font-size: 14px;
     font-weight: 500;
-    color: red;
-    border-bottom: 2px solid red;
+    color: var(--pastel-red);
+    border-bottom: 2px solid var(--pastel-red);
     padding-bottom: 15px;
     margin-bottom: 25px;
 }
