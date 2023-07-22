@@ -36,8 +36,6 @@
   (let [sql "INSERT INTO users (email, password, role, created_at) VALUES (?, ?, ?, ?)"
         result (query-one! [sql email (password/encrypt password) role] true)
         kw (keyword "last-insert-rowid()")]
-    (prn "result: " result)
-    (prn (kw result))
     (kw result)))
 
 (defn set-user-token!
@@ -52,6 +50,4 @@
 (defn user-authenticates?
   [email password]
   (when-let [user (user-by-email email)]
-    (prn "user: " user)
-    (prn "auth? " (password/check password (:password user)))
     (password/check password (:password user))))

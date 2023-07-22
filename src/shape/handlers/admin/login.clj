@@ -33,7 +33,7 @@
   {:status 200
    :headers {"Content-Type" "text/html"}
    :body (view-handler-page request)})
- 
+
 (defn action-handler [request]
   (let [email (get-in request [:form-params "email"])
         password (get-in request [:form-params "password"])
