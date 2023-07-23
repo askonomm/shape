@@ -19,7 +19,7 @@ body.wall {
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 27px;
     font-weight: 600;
     letter-spacing: -0.25px;
     color: #111;
@@ -31,15 +31,22 @@ p {
     color: #444;
 }
 
+a {
+    font-size: 14px;
+    color: var(--pastel-blue);
+}
+
 form {
     width: 350px;
     text-align: left;
+    line-height: 1.45;
     background: #fff;
     box-shadow: 2px 2px 0px #ddd;
     border: 2px solid #111;
     border-radius: 6px;
     padding: 25px;
     margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 form .error {

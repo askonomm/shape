@@ -4,35 +4,43 @@
      [shape.handlers.utils :refer [->page ->redirect ->set-cookie]]
      [shape.utils :refer [->merge]]
      [shape.data :as data]
-     [clojure.string :as string]))
+     [clojure.string :as string]
+     [dotenv :refer [env]]))
+
+(defn- can-reset-password? []
+  (and (env "")
+       (env "")
+       (env "")
+       (env "")))
 
 (defn- view-handler-page [request]
-  (->page
-    [:div.wall-content
-     [:div.logo]
-     [:h2 "Log in"]
-     [:p "Let's get to work."]
-     [:form {:method "post"}
-      (when-let [error (:error request)]
-        [:div.error error])
-      (anti-forgery-field)
-      [:label "E-mail"
-       [:input {:type "email"
-                :placeholder "you@somewhere.com"
-                :value (-> request :remembered :email)
-                :name "email"}]]
-      [:label "Password"
-       [:input {:type "password"
-                :name "password"}]]
-      [:button {:type "submit"
-                :class "primary"} "Log in"]]]
-    {:css ["wall"]
-     :body-class "wall"}))
+  [:div.wall-content
+    [:div.logo]
+    [:h2 "Log in"]
+    [:p "Let's get to work."]
+    [:form {:method "post"}
+     (when-let [error (:error request)]
+       [:div.error error])
+     (anti-forgery-field)
+     [:label "E-mail"
+      [:input {:type "email"
+               :placeholder "you@somewhere.com"
+               :value (-> request :remembered :email)
+               :name "email"}]]
+     [:label "Password"
+      [:input {:type "password"
+               :name "password"}]]
+     [:button {:type "submit"
+               :class "primary"} "Log in"]]
+    [:a {:href "/admin/forgot-password"} "Forgot password?"]])
 
 (defn view-handler [request]
   {:status 200
    :headers {"Content-Type" "text/html"}
-   :body (view-handler-page request)})
+   :body (->page
+          (view-handler-page request)
+          {:css ["wall"]
+           :body-class "wall"})})
 
 (defn action-handler [request]
   (let [email (get-in request [:form-params "email"])
@@ -60,5 +68,6 @@
       :else
       (let [user (data/user-by-email email)]
         (data/set-user-token! (:id user) token)
+        (data/set-user-reset-token! (:id user) "")
         (->merge (->redirect "/admin")
                  (->set-cookie "_shape_token" token))))))

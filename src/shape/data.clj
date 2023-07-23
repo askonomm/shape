@@ -43,6 +43,11 @@
   (let [sql "UPDATE users SET token = ? WHERE id = ?"]
     (query-one! [sql token user-id])))
 
+(defn set-user-reset-token!
+  [user-id token]
+  (let [sql "UPDATE users SET reset_token = ? WHERE id = ?"]
+    (query-one! [sql token user-id])))
+
 (defn user-exists-by-email?
   [email]
   (boolean (user-by-email email)))

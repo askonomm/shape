@@ -2,6 +2,7 @@
   (:require
     [shape.handlers.admin.login :as handlers.admin.login]
     [shape.handlers.admin.setup :as handlers.admin.setup]
+    [shape.handlers.admin.forgot-password :as handlers.admin.forgot-password]
     [shape.middlewares :as middlewares]))
 
 (def ^:private dashboard
@@ -27,8 +28,16 @@
           :middlewares [middlewares/is-setup?]
           :handler handlers.admin.login/action-handler}})
 
+(def ^:private forgot-password
+  {:get {:responses {200 {:body string?}}
+         :middleware [middlewares/is-setup?]
+         :handler handlers.admin.forgot-password/view-handler}
+   :post {:responses {200 {:body string?}}
+          :middlewares [middlewares/is-setup?]
+          :handler handlers.admin.forgot-password/action-handler}})
+
 (def routes
   [["" dashboard]
    ["/setup" setup]
-   ["/login" login]])
-
+   ["/login" login]
+   ["/forgot-password" forgot-password]])
