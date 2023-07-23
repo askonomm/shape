@@ -46,7 +46,8 @@
                    :to email
                    :from from
                    :subject "Reset password"
-                   :body (str "Reset your password via this URL: " url "/reset-password/" token)})))
+                   :body (str "Reset your password via this URL: "
+                              url "/admin/reset-password/" token)})))
 
 (defn action-handler [request]
   (let [email (get-in request [:form-params "email"])

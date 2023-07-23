@@ -21,6 +21,11 @@
   (let [sql "SELECT * FROM users WHERE token = ?"]
     (query-one! [sql token])))
 
+(defn user-by-reset-token
+  [token]
+  (let [sql "SELECT * FROM users WHERE reset_token = ?"]
+    (query-one! [sql token])))
+
 (defn user-by-email
   [email]
   (let [sql "SELECT * FROM users WHERE email = ?"]

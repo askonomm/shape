@@ -4,14 +4,7 @@
      [shape.handlers.utils :refer [->page ->redirect ->set-cookie]]
      [shape.utils :refer [->merge]]
      [shape.data :as data]
-     [clojure.string :as string]
-     [dotenv :refer [env]]))
-
-(defn- can-reset-password? []
-  (and (env "")
-       (env "")
-       (env "")
-       (env "")))
+     [clojure.string :as string]))
 
 (defn- view-handler-page [request]
   [:div.wall-content
