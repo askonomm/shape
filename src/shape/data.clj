@@ -7,14 +7,15 @@
 
 (def db-url (env "DB_URL"))
 
-(def datasource (jdbc/get-datasource db-url))
+(defn datasource []
+  (jdbc/get-datasource db-url))
 
 (defn- query-one!
   ([data]
    (query-one! data false))
   ([data return-keys?]
-   (jdbc/execute-one! datasource data {:return-keys return-keys?
-                                       :builder-fn rs/as-unqualified-kebab-maps})))
+   (jdbc/execute-one! (datasource) data {:return-keys return-keys?
+                                         :builder-fn rs/as-unqualified-kebab-maps})))
 
 (defn user-by-token
   [token]
