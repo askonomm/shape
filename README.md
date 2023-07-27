@@ -10,8 +10,6 @@ Shape is a content management system, written in Clojure. **Currently in progres
 
 - Have Clojure CLI tool installed (namely `clj` CLI tool)
 - Have Java installed
-- Set-up a environment variable `DB_URL` which points to a SQLite database (for example: `DB_URL="jdbc:sqlite:shape.db"`
-  - Note that you can set-up environment variables by creating a `.env` file as well.
 
 ### Running Shape
 
@@ -22,6 +20,12 @@ clj -X shape.core/run
 ```
 
 By running Shape the first time, it will automatically set-up a DB schema. Then fire up your browser and visit `localhost:3999/admin`, this should direct you to the setup page where you can create your account, after which it will redirect you to the admin panel (which is currently empty).
+
+You can change the port that Shape is running on by setting the `PORT` environment variable.
+
+### Database configuration
+
+By default Shape will create a SQLite database on its own when first running it, named `shape.db`, and it will live in the root directory of the site. You can however overwrite this via the `DB_URL` environment variable, which has to be a valid JDBC URL format and point to a SQL database. In theory any database should work, but I've only tested SQLite thus far, so your mileage may vary. If it doesn't work with other SQL databases, feel free to create an issue about it.
 
 ### E-mail configuration
 

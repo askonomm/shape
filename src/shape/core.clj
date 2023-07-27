@@ -44,9 +44,10 @@
 
 #_{:clj-kondo/ignore [:clojure-lsp/unused-public-var]}
 (defn run [_]
-  (if (nil? (env "DB_URL"))
-    (println "DB_URL environment variable is not set, cannot continue.")
-    (do (migrator/run-migrations)
-        (run-jetty (wrap-reload #'handler) {:port 3999
-                                            :join? false}))))
+  (do (migrator/run-migrations)
+      (run-jetty (wrap-reload #'handler)
+                 {:port (if (env "PORT")
+                          (Integer/parseInt (env "PORT"))
+                          3999)
+                  :join? false})))
   
