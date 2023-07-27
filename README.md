@@ -56,8 +56,8 @@ And that's it, pretty straight-forward and this alone should enable the creation
 ## Roadmap to 0.1
 
 - [x] Site setup flow
-- [ ] Authentication flow - **In progress**
-- [ ] Content Shape creation in admin panel
+- [x] Authentication flow
+- [ ] Content Shape creation in admin panel - **In progress** 
 - [ ] Content creation in admin panel
 - [ ] Partials implementation
 - [ ] Pages creation in admin panel
