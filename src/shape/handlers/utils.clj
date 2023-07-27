@@ -11,6 +11,9 @@
 (defn ->set-cookie [name value]
   {:headers {"Set-Cookie" (str name "=" value "; max-age=259200000; path=/")}})
 
+(defn ->expire-cookie [name]
+  {:headers {"Set-Cookie" (str name "=deleted; max-age=0; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT")}})
+
 (defn ->page
   ([content]
    (->page content {}))

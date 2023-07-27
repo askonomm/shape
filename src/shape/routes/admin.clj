@@ -1,17 +1,17 @@
 (ns shape.routes.admin
   (:require
-    [shape.handlers.admin.login :as handlers.admin.login]
-    [shape.handlers.admin.setup :as handlers.admin.setup]
-    [shape.handlers.admin.forgot-password :as handlers.admin.forgot-password]
-    [shape.handlers.admin.reset-password :as handlers.admin.reset-password]
-    [shape.middlewares :as middlewares]))
+   [shape.handlers.admin.dashboard :as handlers.admin.dashboard]
+   [shape.handlers.admin.login :as handlers.admin.login]
+   [shape.handlers.admin.logout :as handlers.admin.logout]
+   [shape.handlers.admin.setup :as handlers.admin.setup]
+   [shape.handlers.admin.forgot-password :as handlers.admin.forgot-password]
+   [shape.handlers.admin.reset-password :as handlers.admin.reset-password]
+   [shape.middlewares :as middlewares]))
 
 (def ^:private dashboard
   {:get {:responses {200 {:body string?}}
          :middleware [middlewares/is-authenticated?]
-         :handler (fn [_] 
-                    {:status 200
-                     :body "Hello from admin"})}})
+         :handler handlers.admin.dashboard/handler}})
 
 (def ^:private setup
   {:get {:responses {200 {:body string?}}
@@ -28,6 +28,10 @@
    :post {:responses {200 {:body string?}}
           :middlewares [middlewares/is-setup?]
           :handler handlers.admin.login/action-handler}})
+
+(def ^:private logout
+  {:get {:responses {200 {:body string?}}
+         :handler handlers.admin.logout/handler}})
 
 (def ^:private forgot-password
   {:get {:responses {200 {:body string?}}
@@ -49,5 +53,6 @@
   [["" dashboard]
    ["/setup" setup]
    ["/login" login]
+   ["/logout" logout]
    ["/forgot-password" forgot-password]
    ["/reset-password/:token" reset-password]])
