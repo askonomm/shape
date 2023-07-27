@@ -36,6 +36,14 @@ a {
     color: var(--pastel-blue);
 }
 
+@media all and (max-width: 450px) {
+    .wall-content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+}
+
 form {
     width: 350px;
     text-align: left;
@@ -47,6 +55,16 @@ form {
     padding: 25px;
     margin-top: 25px;
     margin-bottom: 25px;
+}
+
+@media all and (max-width: 450px) {
+    form {
+        width: 100%;
+        flex-grow: 1;
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+    }
 }
 
 form .success {

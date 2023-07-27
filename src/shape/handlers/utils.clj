@@ -21,7 +21,9 @@
    (html5
      (list 
       [:head 
-       [:meta {:charset "utf-8"}] 
+       [:meta {:charset "utf-8"}]
+       [:meta {:name "viewport"
+               :content "width=device-width, initial-scale=1.0"}]
        [:title (:title opts)]
        [:link {:rel "stylesheet" :href "/assets/shape/css/general.css"}] 
        (for [css (:css opts)]
