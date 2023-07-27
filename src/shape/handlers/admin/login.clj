@@ -1,7 +1,7 @@
 (ns shape.handlers.admin.login
   (:require
      [ring.util.anti-forgery :refer [anti-forgery-field]]
-     [shape.handlers.utils :refer [->page ->redirect ->set-cookie]]
+     [shape.handlers.utils :refer [->admin-page ->redirect ->set-cookie]]
      [shape.utils :refer [->merge]]
      [shape.data :as data]
      [clojure.string :as string]))
@@ -32,12 +32,10 @@
     [:a {:href "/admin/forgot-password"} "Forgot password?"]])
 
 (defn view-handler [request]
-  {:status 200
-   :headers {"Content-Type" "text/html"}
-   :body (->page
-          (view-handler-page request)
-          {:css ["wall"]
-           :body-class "wall"})})
+  (->admin-page
+   (view-handler-page request)
+   {:css ["wall"]
+    :body-class "wall"}))
 
 (defn action-handler [request]
   (let [email (get-in request [:form-params "email"])

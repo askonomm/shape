@@ -4,7 +4,7 @@
    [postal.core :refer [send-message]]
    [dotenv :refer [env]]
    [shape.data :as data]
-   [shape.handlers.utils :refer [->page smtp-config]]))
+   [shape.handlers.utils :refer [->admin-page smtp-config]]))
 
 (defn- view-handler-page [request]
   [:div.wall-content
@@ -32,12 +32,10 @@
                   :class "primary"} "Change password"]))]])
 
 (defn view-handler [request]
-  {:status 200
-   :headers {"Content-Type" "text/html"}
-   :body (->page
-          (view-handler-page request)
-          {:css ["wall"]
-           :body-class "wall"})})
+  (->admin-page
+   (view-handler-page request)
+   {:css ["wall"]
+    :body-class "wall"}))
 
 (defn send-email [email token url]
   (let [from (env "MAIL_FROM")]

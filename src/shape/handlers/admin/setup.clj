@@ -3,7 +3,7 @@
     [clojure.string :as string]
     [ring.util.anti-forgery :refer [anti-forgery-field]]
     [shape.data :as data]
-    [shape.handlers.utils :refer [->redirect ->set-cookie ->page]]
+    [shape.handlers.utils :refer [->redirect ->set-cookie ->admin-page]]
     [shape.utils :refer [->merge]]))
 
 (defn- view-handler-page [request]
@@ -30,12 +30,10 @@
 
 (defn view-handler
   [request]
-  {:status 200
-   :headers {"Content-Type" "text/html"}
-   :body (->page
-           (view-handler-page request)
-           {:css ["wall"]
-            :body-class "wall"})})
+  (->admin-page
+    (view-handler-page request)
+    {:css ["wall"]
+     :body-class "wall"}))
 
 (defn- create-user-and-set-token! [email password token]
   (let [user-id (data/create-user! {:email email

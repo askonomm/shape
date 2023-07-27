@@ -14,22 +14,24 @@
 (defn ->expire-cookie [name]
   {:headers {"Set-Cookie" (str name "=deleted; max-age=0; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT")}})
 
-(defn ->page
+(defn ->admin-page
   ([content]
-   (->page content {}))
+   (->admin-page content {}))
   ([content opts]
-   (html5
-     (list 
-      [:head 
-       [:meta {:charset "utf-8"}]
-       [:meta {:name "viewport"
-               :content "width=device-width, initial-scale=1.0"}]
-       [:title (:title opts)]
-       [:link {:rel "stylesheet" :href "/assets/shape/css/general.css"}] 
-       (for [css (:css opts)]
-         [:link {:rel "stylesheet" :href (str "/assets/shape/css/" css ".css")}])]
-      [:body {:class (:body-class opts)}
-       content]))))
+   {:status 200
+    :headers {"Content-Type" "text/html"}
+    :body (html5
+           (list
+            [:head
+             [:meta {:charset "utf-8"}]
+             [:meta {:name "viewport"
+                     :content "width=device-width, initial-scale=1.0"}]
+             [:title (:title opts)]
+             [:link {:rel "stylesheet" :href "/assets/shape/css/general.css"}]
+             (for [css (:css opts)]
+               [:link {:rel "stylesheet" :href (str "/assets/shape/css/" css ".css")}])]
+            [:body {:class (:body-class opts)}
+             content]))}))
 
 (defn smtp-config []
   {:host (env "MAIL_HOST")

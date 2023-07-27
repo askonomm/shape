@@ -1,6 +1,6 @@
 (ns shape.handlers.admin.reset-password
   (:require
-   [shape.handlers.utils :refer [->page ->redirect]]
+   [shape.handlers.utils :refer [->admin-page ->redirect]]
    [shape.data :as data]))
 
 (defn- view-handler-page [request]
@@ -24,11 +24,10 @@
         [:p "Uh-oh, the reset token is invalid."])]]))
 
 (defn view-handler [request]
-  {:status 200
-   :headers {"Content-Type" "text/html"}
-   :body (->page (view-handler-page request)
-                 {:css ["wall"]
-                  :body-class "wall"})})
+  (->admin-page
+   (view-handler-page request)
+   {:css ["wall"]
+    :body-class "wall"}))
 
 (defn action-handler [request]
   (let [token (-> request :path-params :token)

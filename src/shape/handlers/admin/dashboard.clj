@@ -1,11 +1,10 @@
 (ns shape.handlers.admin.dashboard
   (:require
-   [shape.handlers.utils :refer [->page]]))
+   [shape.handlers.utils :refer [->admin-page]]))
 
 (defn- view-page [request]
   [:div
    [:a {:href "/admin/logout"} "Log out"]])
 
 (defn handler [request]
-  {:status 200
-   :body (->page (view-page request))})
+  (->admin-page (view-page request)))
