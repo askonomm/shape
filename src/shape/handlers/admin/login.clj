@@ -12,6 +12,10 @@
     [:h2 "Log in"]
     [:p "Let's get to work."]
     [:form {:method "post"}
+     (when-let [x (get-in request [:query-params "x"])]
+       (cond
+         (= x "password-changed")
+         [:div.success "Password changed. You can now log in."]))
      (when-let [error (:error request)]
        [:div.error error])
      (anti-forgery-field)

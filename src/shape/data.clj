@@ -3,7 +3,7 @@
     [next.jdbc :as jdbc]
     [next.jdbc.result-set :as rs]
     [dotenv :refer [env]]
-    [crypto.password.bcrypt :as password]))
+    [crypto.password.bcrypt :as pw]))
 
 (def db-url (env "DB_URL"))
 
@@ -40,7 +40,7 @@
 (defn create-user!
   [{:keys [email password role]}]
   (let [sql "INSERT INTO users (email, password, role, created_at) VALUES (?, ?, ?, ?)"
-        result (query-one! [sql email (password/encrypt password) role] true)
+        result (query-one! [sql email (pw/encrypt password) role] true)
         kw (keyword "last-insert-rowid()")]
     (kw result)))
 
@@ -54,6 +54,11 @@
   (let [sql "UPDATE users SET reset_token = ? WHERE id = ?"]
     (query-one! [sql token user-id])))
 
+(defn set-user-password!
+  [user-id password]
+  (let [sql "UPDATE users SET password = ? WHERE id = ?"]
+    (query-one! [sql (pw/encrypt password) user-id])))
+
 (defn user-exists-by-email?
   [email]
   (boolean (user-by-email email)))
@@ -61,4 +66,4 @@
 (defn user-authenticates?
   [email password]
   (when-let [user (user-by-email email)]
-    (password/check password (:password user))))
+    (pw/check password (:password user))))

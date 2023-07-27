@@ -49,6 +49,15 @@ form {
     margin-bottom: 25px;
 }
 
+form .success {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--pastel-green);
+    border-bottom: 2px solid var(--pastel-green);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
 form .error {
     font-size: 14px;
     font-weight: 500;

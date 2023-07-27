@@ -10,10 +10,10 @@ Shape is a content management system, written in Clojure. **Currently in progres
 
 - Have Clojure CLI tool installed (namely `clj` CLI tool)
 - Have Java installed
-- Set-up a environment variable `DB_URL` which points to a SQL database (can be SQLite as well)
+- Set-up a environment variable `DB_URL` which points to a SQLite database (for example: `DB_URL="jdbc:sqlite:shape.db"`
   - Note that you can set-up environment variables by creating a `.env` file as well.
 
-### Run Shape
+### Running Shape
 
 All you need is to execute this command in the folder where Shape's code is:
 
@@ -22,6 +22,20 @@ clj -X shape.core/run
 ```
 
 By running Shape the first time, it will automatically set-up a DB schema. Then fire up your browser and visit `localhost:3999/admin`, this should direct you to the setup page where you can create your account, after which it will redirect you to the admin panel (which is currently empty).
+
+### E-mail configuration
+
+For things that require e-mail, such as the ability to reset your password, you also need to set up additional SMTP settings. There are a number of services that provide a SMTP service, such as [Mailgun]() and [Postmark](). 
+
+To set up e-mail services, you should configure the following environment variables:
+
+- `MAIL_FROM` - E-mail address that the mails are sent from (example: admin@yourwebsite.com)
+- `MAIL_HOST` - SMTP host (example: smtp.postmarkapp.com)
+- `MAIL_USER` - SMTP username
+- `MAIL_PASSWORD` - SMTP password
+- `MAIL_PORT` - SMTP port
+- `MAIL_TLS` - Set this to `true` if you want to use TSL, otherwise remove it.
+- `MAIL_SSL` - Set this to `true` if you want to use SSL, otherwise remove it.
 
 ## The idea
 
