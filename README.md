@@ -2,7 +2,7 @@
 
 # Shape CMS
 
-Shape is a content management system, written in Clojure. **Currently in progress, docs will appear as things get created.**
+Shape is a content management system, written in Clojure. It's target use case is bespoke websites created by developers or development agencies that value stability and ease of maintenance, while allowing the content of the site to be managed with ease by non-developers. **Currently in progress, docs will appear as things get created.**
 
 ## Installation
 
@@ -61,8 +61,8 @@ And that's it, pretty straight-forward and this alone should enable the creation
 
 - [x] Site setup flow
 - [x] Authentication flow
-- [ ] Content Shape creation in admin panel - **In progress** 
+- [ ] Content Shapes implementation - **In progress** 
 - [ ] Content creation in admin panel
 - [ ] Partials implementation
-- [ ] Pages creation in admin panel
-- [ ] Default theme
+- [ ] Pages implementation
+- [ ] Default theme creation
