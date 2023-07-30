@@ -19,13 +19,13 @@ All you need is to execute this command in the folder where Shape's code is:
 clj -X shape.core/run
 ```
 
-By running Shape the first time, it will automatically set-up a DB schema. Then fire up your browser and visit `localhost:3999/admin`, this should direct you to the setup page where you can create your account, after which it will redirect you to the admin panel (which is currently empty).
+By running Shape the first time, it will automatically set-up the DB. Then fire up your browser and visit `localhost:3999/admin`, this should direct you to the setup page where you can create your account, after which it will redirect you to the admin panel (which is currently empty).
 
 You can change the port that Shape is running on by setting the `PORT` environment variable.
 
 ### Database configuration
 
-By default Shape will create a SQLite database on its own when first running it, named `shape.db`, and it will live in the root directory of the site. You can however overwrite this via the `DB_URL` environment variable, which has to be a valid JDBC URL format and point to a SQL database. In theory any SQL database should work, but I've only tested SQLite thus far, so your mileage may vary. If it doesn't work with other SQL databases, feel free to create an issue about it.
+By default Shape will create a SQLite database on its own when first running it, named `shape.db`, and it will live in the root directory of the site. You can however overwrite this via the `DB_URL` environment variable, which has to be a valid JDBC URL format and point to a SQLite database.
 
 ### E-mail configuration
 

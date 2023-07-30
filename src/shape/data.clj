@@ -42,7 +42,8 @@
 (defn create-user!
   [{:keys [email password role]}]
   (let [sql "INSERT INTO users (email, password, role, created_at) VALUES (?, ?, ?, ?)"
-        result (query-one! [sql email (pw/encrypt password) role] true)
+        created-at (System/currentTimeMillis)
+        result (query-one! [sql email (pw/encrypt password) role created-at] true)
         kw (keyword "last-insert-rowid()")]
     (kw result)))
 
@@ -69,3 +70,15 @@
   [email password]
   (when-let [user (user-by-email email)]
     (pw/check password (:password user))))
+
+(defn content-item-exists? [id]
+  (let [sql "SELECT * FROM content WHERE id = ?"]
+    (boolean (query-one! [sql id]))))
+
+(defn create-content-item!
+  [{:keys [shape-identifier]}]
+  (let [sql "INSERT INTO content (shape_identifier, created_at) VALUES (?, ?)"
+        created-at (System/currentTimeMillis)
+        result (query-one! [sql shape-identifier created-at] true)
+        kw (keyword "last-insert-rowid()")]
+    (kw result)))

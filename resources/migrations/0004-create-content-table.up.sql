@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS content (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  shape_identifier TEXT NOT NULL,
+  created_at INTEGER
+);

@@ -1,7 +1,8 @@
 (ns shape.middlewares
   (:require
     [ring.middleware.cookies :refer [cookies-request]]
-    [shape.data :as data]))
+    [shape.data :as data]
+    [config :refer [theme]]))
 
 (defn is-authenticated?
   "Check if the user has the authenticated token present, and
@@ -38,3 +39,14 @@
       {:status 302
        :headers {"Location" "/admin/setup"}
        :body ""})))
+
+(defn shape-exists?
+  "Checks whether the Content Shape exists or not."
+  [handler]
+  (fn [request]
+    (let [identifier-kw (-> request :path-params :identifier keyword)]
+      (if (->> theme :shapes (filter #(= (:identifier %) identifier-kw)) first)
+        (handler request)
+        {:status 302
+         :headers {"Location" "/admin"}
+         :body ""}))))
