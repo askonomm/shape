@@ -1,11 +1,11 @@
 (ns shape.migrator
   (:require
-    [dotenv :refer [env]]
+    [shape.data :refer [db-url]]
     [ragtime.jdbc :as jdbc]
     [ragtime.repl :as repl]))
 
 (def config 
-  {:datastore (jdbc/sql-database {:connection-uri (env "DB_URL")})
+  {:datastore (jdbc/sql-database {:connection-uri (db-url)})
    :migrations (jdbc/load-resources "migrations")})
 
 (defn run-migrations []

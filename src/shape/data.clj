@@ -5,12 +5,13 @@
     [dotenv :refer [env]]
     [crypto.password.bcrypt :as pw]))
 
-(def db-url
-  (or (env "DB_URL")
-      "jdbc:sqlite:shape.db"))
+(defn db-url []
+  (if-not (nil? (env "DB_URL"))
+    (env "DB_URL")
+    "jdbc:sqlite:shape.db"))
 
 (defn datasource []
-  (jdbc/get-datasource db-url))
+  (jdbc/get-datasource (db-url)))
 
 (defn- query-one!
   ([data]
