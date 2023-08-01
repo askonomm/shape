@@ -75,6 +75,10 @@
   (let [sql "SELECT * FROM content WHERE id = ?"]
     (boolean (query-one! [sql id]))))
 
+(defn content-item-field [content-id field-identifier]
+  (let [sql "SELECT * FROM content_fields WHERE content_id = ? AND field_identifier = ?"]
+    (query-one! [sql content-id field-identifier])))
+
 (defn create-content-item!
   [{:keys [shape-identifier]}]
   (let [sql "INSERT INTO content (shape_identifier, created_at) VALUES (?, ?)"

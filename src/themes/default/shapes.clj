@@ -7,7 +7,10 @@
    :name "Blog Posts"
    :singular-name "Blog Post"
    :fields [(fields/text {:identifier :title
-                          :name "Post Title"})]})
+                          :name "Post Title"})
+            (fields/text {:identifier :url-slug
+                          :name "URL Slug"
+                          :prefix "https://google.com/"})]})
 
 (def shapes
   [blog-post])
