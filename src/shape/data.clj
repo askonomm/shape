@@ -20,6 +20,13 @@
    (jdbc/execute-one! (datasource) data {:return-keys return-keys?
                                          :builder-fn rs/as-unqualified-kebab-maps})))
 
+(defn- query!
+  ([data]
+   (query! data false))
+  ([data return-keys?]
+   (jdbc/execute! (datasource) data {:return-keys return-keys?
+                                     :builder-fn rs/as-unqualified-kebab-maps})))
+
 (defn user-by-token
   [token]
   (let [sql "SELECT * FROM users WHERE token = ?"]
@@ -71,6 +78,10 @@
   [email password]
   (when-let [user (user-by-email email)]
     (pw/check password (:password user))))
+
+(defn content-items [identifier]
+  (let [sql "SELECT * FROM content WHERE shape_identifier = ?"]
+    (query! [sql identifier])))
 
 (defn content-item-exists? [id]
   (let [sql "SELECT * FROM content WHERE id = ?"]
