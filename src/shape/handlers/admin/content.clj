@@ -14,7 +14,7 @@
                   (:value field))
           viewable (:viewable identity-field)]
       [:div
-       [:a {:href (str "/admin/content/" shape-identifier "/" (:id item))}
+       [:a {:href (str "/admin/content/" shape-identifier "/item/" (:id item))}
         [:div.field
          (viewable {:value value})]]])))
 
