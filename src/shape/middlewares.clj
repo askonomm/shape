@@ -2,6 +2,7 @@
   (:require
     [ring.middleware.cookies :refer [cookies-request]]
     [shape.data :as data]
+    [shape.utils :as utils]
     [config :refer [theme]]))
 
 (defn is-authenticated?
@@ -50,3 +51,12 @@
         {:status 302
          :headers {"Location" "/admin"}
          :body ""}))))
+
+(defn generic
+  [handler]
+  (fn [request]
+    (let [https? (= (:scheme request) :https)
+          host (get-in request [:headers "host"])
+          url (if https? (str "https://" host) (str "http://" host))]
+      (alter-var-root #'utils/*url* (constantly url))
+      (handler request))))

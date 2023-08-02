@@ -1,5 +1,7 @@
 (ns shape.utils)
 
+(def ^:dynamic *url* nil)
+
 (defn ->merge [& maps]
   (letfn [(reconcile-keys [val-in-result val-in-latter]
             (if (and (map? val-in-result)

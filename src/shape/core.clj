@@ -14,6 +14,7 @@
     [reitit.ring.middleware.parameters :as parameters]
     [muuntaja.core :as m]
     [dotenv :refer [env]]
+    [shape.middlewares :as middlewares]
     [shape.routes.site :as routes.site]
     [shape.routes.admin :as routes.admin]
     [shape.migrator :as migrator]
@@ -38,7 +39,8 @@
 (def handler
   (-> app
       (wrap-resource "public")
-      (wrap-ratelimit {:limits [(ip-limit 100)]
+      middlewares/generic
+      (wrap-ratelimit {:limits      [(ip-limit 100)]
                        :err-handler handlers.rate-limit/handler})))
 
 
