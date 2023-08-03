@@ -7,5 +7,7 @@
   [:div.sidebar
    [:div.shapes
     (for [shape (shapes/shapes request)]
-      [:a {:href (str "/admin/content/" (-> shape :identifier name))}
+      [:a {:href (str "/admin/content/" (-> shape :identifier name))
+           :class (when (= (-> request :path-params :identifier) (-> shape :identifier name))
+                    "active")}
        (:name shape)])]])

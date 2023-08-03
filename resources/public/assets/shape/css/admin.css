@@ -25,6 +25,10 @@ body {
 .sidebar .shapes a:hover {
     color: #111;
 }
+.sidebar .shapes a.active {
+    color: #111;
+    font-weight: 600;
+}
 
 .content {
     background: #fff;
