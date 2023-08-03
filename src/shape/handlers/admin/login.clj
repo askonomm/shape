@@ -28,7 +28,7 @@
       [:input {:type "password"
                :name "password"}]]
      [:button {:type "submit"
-               :class "primary"} "Log in"]]
+               :class "button primary"} "Log in"]]
     [:a {:href "/admin/forgot-password"} "Forgot password?"]])
 
 (defn view-handler [request]

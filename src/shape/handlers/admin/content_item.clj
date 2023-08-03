@@ -5,23 +5,24 @@
    [shape.data :as data]
    [config :refer [theme]]))
 
-(defn- handler-page [request]
+(defn- content [request]
   (let [shape-identifier-kw (-> request :path-params :identifier keyword)
         content-id (-> request :path-params :id)
         fields (->> theme :shapes (filter #(= (:identifier %) shape-identifier-kw)) first :fields)]
-    (for [{:keys [editable identifier]} fields]
-      [:div.field
-       (editable
-         {:value (:value (data/content-item-field content-id (name identifier)))
-          :content-id (Integer/parseInt content-id)})])))
+    [:div.content
+     (for [{:keys [editable identifier]} fields]
+       [:div.field
+        (editable
+          {:value (:field-value (data/content-item-field content-id (name identifier)))
+           :content-id (Integer/parseInt content-id)})])]))
 
 (defn handler [request]
   (let [shape-identifier (-> request :path-params :identifier)
         content-id (-> request :path-params :id)]
     (if (data/content-item-exists? content-id)
       (->admin-page
-       (list
+       [:div.container
         (->sidebar)
-        (handler-page request))
+        (content request)]
        {:css ["admin"]})
       (->redirect (str "/admin/content/" shape-identifier)))))

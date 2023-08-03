@@ -98,3 +98,11 @@
         result (query-one! [sql shape-identifier created-at] true)
         kw (keyword "last-insert-rowid()")]
     (kw result)))
+
+(defn set-content-item-field!
+  [content-id field-identifier field-value]
+  (if (query-one! ["SELECT * FROM content_fields WHERE content_id = ? AND field_identifier = ?" content-id field-identifier])
+    (let [sql "UPDATE content_fields SET field_value = ? WHERE content_id = ? AND field_identifier = ?"]
+      (query-one! [sql field-value content-id field-identifier]))
+    (let [sql "INSERT INTO content_fields (content_id, field_identifier, field_value) VALUES (?, ?, ?)"]
+      (query-one! [sql content-id field-identifier field-value]))))

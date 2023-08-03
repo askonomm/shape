@@ -2,11 +2,17 @@
   (:require
     [ring.middleware.cookies :refer []]
     [hiccup.page :refer [html5]]
-    [dotenv :refer [env]]))
+    [dotenv :refer [env]]
+    [clojure.data.json :as json]))
 
 (defn ->redirect [to]
   {:status 302
    :headers {"Location" to}})
+
+(defn ->json [data]
+  {:status 200
+   :headers {"Content-Type" "application/json"}
+   :body (json/write-str data)})
 
 (defn ->set-cookie [name value]
   {:headers {"Set-Cookie" (str name "=" value "; max-age=259200000; path=/")}})
@@ -29,7 +35,8 @@
              [:title (:title opts)]
              [:link {:rel "stylesheet" :href "/assets/shape/css/general.css"}]
              (for [css (:css opts)]
-               [:link {:rel "stylesheet" :href (str "/assets/shape/css/" css ".css")}])]
+               [:link {:rel "stylesheet" :href (str "/assets/shape/css/" css ".css")}])
+             [:script {:src "https://unpkg.com/htmx.org@1.9.4"}]]
             [:body {:class (:body-class opts)}
              content]))}))
 
@@ -38,5 +45,5 @@
    :user (env "MAIL_USER")
    :pass (env "MAIL_PASSWORD")
    :port (Integer/parseInt (env "MAIL_PORT"))
-   :tls (some? (env "MAIL_TLS"))
-   :ssl (some? (env "MAIL_SSL"))})
+   :tls  (some? (env "MAIL_TLS"))
+   :ssl  (some? (env "MAIL_SSL"))})

@@ -29,7 +29,7 @@
                    :placeholder "you@somewhere.com"
                    :value (-> request :remembered :email)}]]
         [:button {:type "submit"
-                  :class "primary"} "Change password"]))]])
+                  :class "button primary"} "Change password"]))]])
 
 (defn view-handler [request]
   (->admin-page

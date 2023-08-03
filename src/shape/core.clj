@@ -40,7 +40,7 @@
   (-> app
       (wrap-resource "public")
       middlewares/generic
-      (wrap-ratelimit {:limits      [(ip-limit 100)]
+      (wrap-ratelimit {:limits [(ip-limit 500)]
                        :err-handler handlers.rate-limit/handler})))
 
 

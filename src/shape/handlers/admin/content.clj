@@ -13,7 +13,7 @@
                   (:placeholder identity-field)
                   (:value field))
           viewable (:viewable identity-field)]
-      [:div
+      [:div.content-items
        [:a {:href (str "/admin/content/" shape-identifier "/item/" (:id item))}
         [:div.field
          (viewable {:value value})]]])))
@@ -24,15 +24,16 @@
         shape (->> theme :shapes (filter #(= (:identifier %) identifier-kw)) first)
         identity-field-identifier (:identity-field shape)
         identity-field (->> shape :fields (filter #(= (:identifier %) identity-field-identifier)) first)]
-    [:div
-     [:h2 (:name shape)]
-     [:a {:href (str "/admin/content/" identifier "/add")}
-      (str "Add " (:singular-name shape))]
+    [:div.content
+     [:div.header
+      [:h1 (:name shape)]
+      [:a.button.primary.small {:href (str "/admin/content/" identifier "/add")}
+       (str "Add " (:singular-name shape))]]
      (content-items identifier identity-field)]))
 
 (defn handler [request]
   (->admin-page
-   (list
-    (->sidebar)
-    (handler-page request))
+    [:div.container
+     (->sidebar)
+     (handler-page request)]
    {:css ["admin"]}))

@@ -20,7 +20,7 @@
           [:input {:type "password"
                    :name "password_again"}]]
          [:button {:type "submit"
-                   :class "primary"} "Change password"])
+                   :class "button primary"} "Change password"])
         [:p "Uh-oh, the reset token is invalid."])]]))
 
 (defn view-handler [request]
