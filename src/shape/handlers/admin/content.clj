@@ -8,10 +8,10 @@
 
 (defn- content-items [shape-identifier identity-field]
   (for [item (data/content-items shape-identifier)]
-    (let [field (data/content-item-field (:id item) (:identifier identity-field))
-          value (if (string/blank? (:value field))
+    (let [{:keys [field-value] :as a} (data/content-item-field (:id item) (-> identity-field :identifier name))
+          value (if (string/blank? field-value)
                   (:placeholder identity-field)
-                  (:value field))
+                  field-value)
           viewable (:viewable identity-field)]
       [:div.content-items
        [:a {:href (str "/admin/content/" shape-identifier "/item/" (:id item))}
