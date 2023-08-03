@@ -1,7 +1,7 @@
 (ns shape.handlers.admin.dashboard
   (:require
    [shape.handlers.utils :refer [->admin-page]]
-   [shape.handlers.admin.utils :refer [->sidebar]]
+   [shape.handlers.admin.utils :refer [sidebar]]
    [config :refer [theme]]))
 
 (defn- view-page [request]
@@ -11,6 +11,6 @@
 (defn handler [request]
   (->admin-page
    (list
-     (->sidebar)
+     (sidebar request)
      (view-page request))
    {:css ["admin"]}))

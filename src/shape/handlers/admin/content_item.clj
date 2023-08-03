@@ -1,14 +1,15 @@
 (ns shape.handlers.admin.content-item
   (:require
-   [shape.handlers.utils :refer [->redirect ->admin-page]]
-   [shape.handlers.admin.utils :refer [->sidebar]]
-   [shape.data :as data]
-   [config :refer [theme]]))
+    [shape.handlers.utils :refer [->redirect ->admin-page]]
+    [shape.handlers.admin.utils :refer [sidebar]]
+    [shape.data :as data]
+    [shape.shapes :as shapes]))
 
 (defn- content [request]
   (let [shape-identifier-kw (-> request :path-params :identifier keyword)
         content-id (-> request :path-params :id)
-        fields (->> theme :shapes (filter #(= (:identifier %) shape-identifier-kw)) first :fields)]
+        shape (shapes/first-by-identifier request shape-identifier-kw)
+        fields (:fields shape)]
     [:div.content
      (for [{:keys [editable identifier]} fields]
        [:div.field
@@ -22,7 +23,7 @@
     (if (data/content-item-exists? content-id)
       (->admin-page
        [:div.container
-        (->sidebar)
+        (sidebar request)
         (content request)]
        {:css ["admin"]})
       (->redirect (str "/admin/content/" shape-identifier)))))

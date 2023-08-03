@@ -1,11 +1,11 @@
 (ns shape.handlers.admin.utils
   (:require
-   [config :refer [theme]]))
+    [shape.shapes :as shapes]))
 
-(defn ->sidebar
-  []
+(defn sidebar
+  [request]
   [:div.sidebar
    [:div.shapes
-    (for [shape (:shapes theme)]
+    (for [shape (shapes/shapes request)]
       [:a {:href (str "/admin/content/" (-> shape :identifier name))}
        (:name shape)])]])

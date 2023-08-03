@@ -3,8 +3,8 @@
     [clojure.string :as string]
     [shape.data :as data]
     [shape.handlers.utils :refer [->admin-page]]
-    [shape.handlers.admin.utils :refer [->sidebar]]
-    [config :refer [theme]]))
+    [shape.handlers.admin.utils :refer [sidebar]]
+    [shape.shapes :as shapes]))
 
 (defn- content-items [shape-identifier identity-field]
   (for [item (data/content-items shape-identifier)]
@@ -21,7 +21,7 @@
 (defn- handler-page [request]
   (let [identifier (-> request :path-params :identifier)
         identifier-kw (keyword identifier)
-        shape (->> theme :shapes (filter #(= (:identifier %) identifier-kw)) first)
+        shape (shapes/first-by-identifier request identifier-kw)
         identity-field-identifier (:identity-field shape)
         identity-field (->> shape :fields (filter #(= (:identifier %) identity-field-identifier)) first)]
     [:div.content
@@ -34,6 +34,6 @@
 (defn handler [request]
   (->admin-page
     [:div.container
-     (->sidebar)
+     (sidebar request)
      (handler-page request)]
    {:css ["admin"]}))
