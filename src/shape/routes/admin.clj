@@ -75,7 +75,7 @@
          :handler content-item/handler}})
 
 (def ^:private update-content-item-field
-  {:post {:responses {200 {:body string?}}
+  {:post {:responses {200 {:body {:msg string?}}}
           :middleware [middlewares/is-setup?
                        middlewares/is-authenticated?]
           :handler update-field/handler}})

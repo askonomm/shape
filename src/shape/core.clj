@@ -29,7 +29,7 @@
               :muuntaja m/instance
               :middleware [parameters/parameters-middleware
                            rrc/coerce-request-middleware
-                           muuntaja/format-response-middleware
+                           muuntaja/format-middleware
                            rrc/coerce-response-middleware]}})
     {:middleware [wrap-session
                   wrap-anti-forgery

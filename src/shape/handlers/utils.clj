@@ -1,6 +1,5 @@
 (ns shape.handlers.utils
   (:require
-    [ring.middleware.cookies :refer []]
     [hiccup.page :refer [html5]]
     [dotenv :refer [env]]
     [clojure.data.json :as json]))
@@ -11,8 +10,7 @@
 
 (defn ->json [data]
   {:status 200
-   :headers {"Content-Type" "application/json"}
-   :body (json/write-str data)})
+   :body data})
 
 (defn ->set-cookie [name value]
   {:headers {"Set-Cookie" (str name "=" value "; max-age=259200000; path=/")}})
