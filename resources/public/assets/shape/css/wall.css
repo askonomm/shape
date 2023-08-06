@@ -49,8 +49,8 @@ form {
     text-align: left;
     line-height: 1.45;
     background: #fff;
-    box-shadow: 2px 2px 0px #ddd;
-    border: 2px solid #111;
+    box-shadow: 0 2px 16px rgba(0,0,0,.1);
+    border: 1px solid #111;
     border-radius: 6px;
     padding: 25px;
     margin-top: 25px;
@@ -71,7 +71,7 @@ form .success {
     font-size: 14px;
     font-weight: 500;
     color: var(--pastel-green);
-    border-bottom: 2px solid var(--pastel-green);
+    border-bottom: 1px solid var(--pastel-green);
     padding-bottom: 15px;
     margin-bottom: 25px;
 }
@@ -80,7 +80,7 @@ form .error {
     font-size: 14px;
     font-weight: 500;
     color: var(--pastel-red);
-    border-bottom: 2px solid var(--pastel-red);
+    border-bottom: 1px solid var(--pastel-red);
     padding-bottom: 15px;
     margin-bottom: 25px;
 }

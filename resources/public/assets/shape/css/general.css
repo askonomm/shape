@@ -10,21 +10,24 @@
 
 body {
     font-family: system-ui;
+    font-size: 14px;
 }
 
 input,
 textarea {
     font-family: system-ui;
+    border-radius: 0px;
 }
 
 .button.primary {
+    font-size: 12px;
     font-weight: 600;
     color: #fff;
-    background: var(--primary-color);
-    box-shadow: 2px 2px 0 #eee;
-    border: 1px solid var(--primary-color);
+    background: linear-gradient(#373737, #272727);
+    box-shadow: 0 1px 6px rgba(0,0,0,.15);
+    border: 1px solid transparent;
     border-radius: 25px;
-    transition: all 0.05s ease-in-out;
+    transition: all 0.1s ease-in-out;
     cursor: pointer;
     text-transform: uppercase;
     padding: 12px 15px;
@@ -36,14 +39,16 @@ textarea {
 
 .button.primary:hover {
     color: var(--primary-color);
-    text-shadow: 0 1px 0 rgba(255,255,255,.5);
-    background: var(--brand-color-light);
-    box-shadow: 2px 2px 0 #eee;
+    text-shadow: 0 1px 0 rgba(255,255,255,.25);
+    background: linear-gradient(var(--brand-color-light), var(--brand-color));
+    border: 1px solid rgba(0,0,0,.35);
+    border-bottom: 1px solid rgba(0,0,0,.5);
 }
 
 input {
-    box-shadow: inset -2px 2px 0px #ddd;
-    border: 2px solid #111;
+    height: 34px;
+    box-shadow: inset -2px 2px 6px #eee;
+    border: 1px solid #111;
     border-radius: 6px;
     padding-left: 15px;
     padding-right: 15px;

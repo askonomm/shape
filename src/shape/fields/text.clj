@@ -1,10 +1,12 @@
-(ns shape.fields)
+(ns shape.fields.text)
 
-(defn- text-editable
+(defn- editable
   "Render a text field as an editable view."
   [{:keys [identifier content-id value prefix suffix] :as opts}]
   [:label (:name opts)
-   [:div.text-field
+   [:div.text-field.editable-field
+    {:class [(when suffix "suffix")
+             (when prefix "prefix")]}
     (when prefix
       [:span.prefix prefix])
     [:input {:type "text"
@@ -15,10 +17,12 @@
     (when suffix
       [:span.suffix suffix])]])
 
-(defn- text-viewable
+(defn- viewable
   "Render a text field as a viewable view."
   [{:keys [value prefix suffix]}]
-  [:div.text-field
+  [:div.text-field.viewable-field
+   {:class [(when suffix "suffix")
+            (when prefix "prefix")]}
    (when prefix
      [:span.prefix prefix])
    [:span value]
@@ -30,5 +34,5 @@
   [{:keys [identifier placeholder] :as opts}]
   {:identifier identifier
    :placeholder placeholder
-   :editable #(text-editable (merge opts %))
-   :viewable #(text-viewable (merge opts %))})
+   :editable #(editable (merge opts %))
+   :viewable #(viewable (merge opts %))})

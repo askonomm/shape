@@ -25,7 +25,7 @@
                 :placeholder ""
                 :name "password"}]]
       [:button {:type "submit"
-                :class "primary"}
+                :class "button primary"}
        "Set up"]]])
 
 (defn view-handler

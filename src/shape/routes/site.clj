@@ -7,5 +7,9 @@
          :handler handlers.site.home/handler}})
 
 (def routes
-  [["" home]])      
+  [["" home]
+   ["favicon.ico" {:get {:responses {200 {:body string?}}
+                         :handler (fn [_]
+                                    {:status 200
+                                     :body ""})}}]])      
         
