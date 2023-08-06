@@ -21,7 +21,7 @@ body {
     padding-top: 30px;
 }
 
-.sidebar .shapes a {
+.sidebar a {
     display: block;
     font-size: 16px;
     color: #777;
@@ -29,18 +29,31 @@ body {
     margin-bottom: 10px;
 }
 
-.sidebar .shapes a:hover {
+.sidebar a:first-child {
+    margin-bottom: 30px;
+}
+
+.sidebar a:hover {
     color: #111;
 }
-.sidebar .shapes a.active {
+.sidebar a.active {
     color: #111;
     font-weight: 600;
+}
+
+.sidebar .secondary-menu {
+    margin-top: 100px;
+}
+
+.sidebar .secondary-menu a {
+    font-size: 13px;
 }
 
 /**
  * CONTENT
 */
 .content {
+    align-self: baseline;
     background: #fff;
     box-shadow: 0 2px 16px rgba(0,0,0,.1);
     border-left: 1px solid #111;
@@ -99,20 +112,38 @@ body {
     display: flex;
 }
 
-.content .text-field.viewable-field span.value {
-    font-size: 15px;
-    color: #111;
+.content .content-items a {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 15px;
 }
 
-.content .text-field.viewable-field.prefix span.value {
+.content .content-items a:last-child {
+    margin-bottom: 0;
+}
+
+.content .text-field.viewable-field {
+    display: inline-block;
+    height: 34px;
+    line-height: 34px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: all 0.15s ease-in-out;
     padding-left: 15px;
-}
-
-.content .text-field.viewable-field.suffix span.value {
     padding-right: 15px;
 }
 
-.content .text-field .prefix {
+.content .text-field.viewable-field:hover {
+    border: 1px solid #111;
+}
+
+.content .text-field.viewable-field span {
+    font-size: 15px;
+    color: #111;
+    text-decoration: none;
+}
+
+.content .text-field.editable-field .prefix {
     display: block;
     width: auto;
     height: 34px;
@@ -128,7 +159,12 @@ body {
     padding-right: 15px;
 }
 
-.content .text-field .suffix {
+.content .text-field.viewable-field .prefix,
+.content .text-field.viewable-field .suffix {
+    color: #999;
+}
+
+.content .text-field.editable-field .suffix {
     display: block;
     width: auto;
     height: 34px;

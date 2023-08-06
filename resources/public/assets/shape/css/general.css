@@ -19,13 +19,9 @@ textarea {
     border-radius: 0px;
 }
 
-.button.primary {
+.button {
     font-size: 12px;
     font-weight: 600;
-    color: #fff;
-    background: linear-gradient(#373737, #272727);
-    box-shadow: 0 1px 6px rgba(0,0,0,.15);
-    border: 1px solid transparent;
     border-radius: 25px;
     transition: all 0.1s ease-in-out;
     cursor: pointer;
@@ -33,8 +29,11 @@ textarea {
     padding: 12px 15px;
 }
 
-.button.primary.small {
-    padding: 6px 12px;
+.button.primary {
+    color: #fff;
+    background: linear-gradient(#373737, #272727);
+    box-shadow: 0 1px 6px rgba(0,0,0,.15);
+    border: 1px solid transparent;
 }
 
 .button.primary:hover {
@@ -43,6 +42,15 @@ textarea {
     background: linear-gradient(var(--brand-color-light), var(--brand-color));
     border: 1px solid rgba(0,0,0,.35);
     border-bottom: 1px solid rgba(0,0,0,.5);
+}
+
+.button.secondary {
+    background: linear-gradient(#fafafa, #fff);
+    border: 1px solid #ddd;
+}
+
+.button.small {
+    padding: 6px 12px;
 }
 
 input {

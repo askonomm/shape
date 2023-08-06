@@ -7,16 +7,16 @@
     [shape.shapes :as shapes]))
 
 (defn- content-items [shape-identifier identity-field]
-  (for [item (data/content-items shape-identifier)]
-    (let [{:keys [field-value] :as a} (data/content-item-field (:id item) (-> identity-field :identifier name))
-          value (if (string/blank? field-value)
-                  (:placeholder identity-field)
-                  field-value)
-          viewable (:viewable identity-field)]
-      [:div.content-items
+  [:div.content-items
+   (for [item (data/content-items shape-identifier)]
+     (let [{:keys [field-value] :as a} (data/content-item-field (:id item) (-> identity-field :identifier name))
+           value (if (string/blank? field-value)
+                   (:placeholder identity-field)
+                   field-value)
+           viewable (:viewable identity-field)]
        [:a {:href (str "/admin/content/" shape-identifier "/item/" (:id item))}
         [:div.field
-         (viewable {:value value})]]])))
+         (viewable {:value value})]]))])
 
 (defn- content [request]
   (let [identifier (-> request :path-params :identifier)
