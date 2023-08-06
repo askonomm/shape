@@ -4,13 +4,14 @@
    [shape.handlers.admin.utils :refer [sidebar]]
    [config :refer [theme]]))
 
-(defn- view-page [request]
-  [:div
-   [:a {:href "/admin/logout"} "Log out"]])
+(defn- content [request]
+  [:div.content
+   [:div.header
+    [:h1 "Dashboard"]]])
 
 (defn handler [request]
   (->admin-page
-   (list
+   [:div.container
      (sidebar request)
-     (view-page request))
+     (content request)]
    {:css ["admin"]}))
