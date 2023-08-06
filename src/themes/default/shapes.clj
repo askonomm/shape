@@ -10,7 +10,9 @@
    :identity-field :title
    :fields [(text {:identifier :title
                    :placeholder "Untitled ..."
-                   :name "Post Title"})
+                   :name "Post Title"
+                   :prefix "asd"
+                   :suffix "asdasd"})
             (text {:identifier :url-slug
                    :name "URL Slug"
                    :prefix (str (utils/request->url request)"/blog/")})]})

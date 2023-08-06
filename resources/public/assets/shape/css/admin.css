@@ -99,6 +99,19 @@ body {
     display: flex;
 }
 
+.content .text-field.viewable-field span.value {
+    font-size: 15px;
+    color: #111;
+}
+
+.content .text-field.viewable-field.prefix span.value {
+    padding-left: 15px;
+}
+
+.content .text-field.viewable-field.suffix span.value {
+    padding-right: 15px;
+}
+
 .content .text-field .prefix {
     display: block;
     width: auto;

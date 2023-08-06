@@ -25,7 +25,7 @@
             (when prefix "prefix")]}
    (when prefix
      [:span.prefix prefix])
-   [:span value]
+   [:span.value value]
    (when suffix
      [:span.suffix suffix])])
 
