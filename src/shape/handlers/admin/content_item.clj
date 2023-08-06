@@ -11,6 +11,8 @@
         shape (shapes/first-by-identifier request shape-identifier-kw)
         fields (:fields shape)]
     [:div.content
+     [:div.header
+      [:h1 (str "Edit "  (:singular-name shape))]]
      (for [{:keys [editable identifier]} fields]
        [:div.field
         (editable
