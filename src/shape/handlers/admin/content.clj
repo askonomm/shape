@@ -18,7 +18,7 @@
         [:div.field
          (viewable {:value value})]]])))
 
-(defn- handler-page [request]
+(defn- content [request]
   (let [identifier (-> request :path-params :identifier)
         identifier-kw (keyword identifier)
         shape (shapes/first-by-identifier request identifier-kw)
@@ -35,5 +35,5 @@
   (->admin-page
     [:div.container
      (sidebar request)
-     (handler-page request)]
+     (content request)]
    {:css ["admin"]}))
