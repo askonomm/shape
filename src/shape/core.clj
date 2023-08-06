@@ -6,7 +6,6 @@
     [ring.middleware.anti-forgery :refer [wrap-anti-forgery]]
     [ring.middleware.session :refer [wrap-session]]
     [ring.middleware.resource :refer [wrap-resource]]
-    [ring.middleware.ratelimit :refer [wrap-ratelimit ip-limit]]
     [reitit.ring :as ring]
     [reitit.coercion.spec]
     [reitit.ring.coercion :as rrc]
@@ -16,8 +15,7 @@
     [dotenv :refer [env]]
     [shape.routes.site :as routes.site]
     [shape.routes.admin :as routes.admin]
-    [shape.migrator :as migrator]
-    [shape.handlers.rate-limit :as handlers.rate-limit])
+    [shape.migrator :as migrator])
   (:gen-class))
 
 (def app
@@ -37,10 +35,7 @@
 
 (def handler
   (-> app
-      (wrap-resource "public")
-      (wrap-ratelimit {:limits [(ip-limit 500)]
-                       :err-handler handlers.rate-limit/handler})))
-
+      (wrap-resource "public")))
 
 #_{:clj-kondo/ignore [:clojure-lsp/unused-public-var]}
 (defn run [_]

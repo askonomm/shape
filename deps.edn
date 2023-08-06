@@ -10,7 +10,6 @@
         dev.weavejester/ragtime {:mvn/version "0.9.3"}
         hiccup/hiccup {:mvn/version "2.0.0-RC1"}
         crypto-password/crypto-password {:mvn/version "0.3.0"}
-        ring-ratelimit/ring-ratelimit {:mvn/version "0.2.3"}
         com.draines/postal {:mvn/version "2.0.5"}
         org.clojure/data.json {:mvn/version "2.4.0"}}
  :aliases
