@@ -2,7 +2,7 @@
 
 (defn- editable
   "Render a text field as an editable view."
-  [{:keys [identifier content-id value prefix suffix] :as opts}]
+  [{:keys [identifier content-id value prefix suffix placeholder] :as opts}]
   [:label (:name opts)
    [:div.text-field.editable-field
     {:class [(when suffix "suffix")
@@ -11,6 +11,7 @@
       [:span.prefix prefix])
     [:input {:type "text"
              :value value
+             :placeholder placeholder
              :name (name identifier)
              :hx-post (str "/admin/api/content-item/" content-id "/update-field")
              :hx-trigger "keyup changed delay:250ms"}]
