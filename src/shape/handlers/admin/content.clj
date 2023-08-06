@@ -6,14 +6,14 @@
     [shape.handlers.admin.utils :refer [sidebar]]
     [shape.shapes :as shapes]))
 
-(defn- content-items [shape-identifier identity-field]
+(defn- content-items [shape-identifier admin-list-view-field]
   [:div.content-items
    (for [item (data/content-items shape-identifier)]
-     (let [{:keys [field-value] :as a} (data/content-item-field (:id item) (-> identity-field :identifier name))
+     (let [{:keys [field-value] :as a} (data/content-item-field (:id item) (-> admin-list-view-field :identifier name))
            value (if (string/blank? field-value)
-                   (:placeholder identity-field)
+                   (:placeholder admin-list-view-field)
                    field-value)
-           viewable (:viewable identity-field)]
+           viewable (:viewable admin-list-view-field)]
        [:a {:href (str "/admin/content/" shape-identifier "/item/" (:id item))}
         [:div.field
          (viewable {:value value})]]))])
@@ -22,14 +22,14 @@
   (let [identifier (-> request :path-params :identifier)
         identifier-kw (keyword identifier)
         shape (shapes/first-by-identifier request identifier-kw)
-        identity-field-identifier (:identity-field shape)
-        identity-field (->> shape :fields (filter #(= (:identifier %) identity-field-identifier)) first)]
+        admin-list-view-field-identifier (:admin-list-view-field shape)
+        admin-list-view-field (->> shape :fields (filter #(= (:identifier %) admin-list-view-field-identifier)) first)]
     [:div.content
      [:div.header
       [:h1 (:name shape)]
       [:a.button.primary.small {:href (str "/admin/content/" identifier "/add")}
        (str "Add " (:singular-name shape))]]
-     (content-items identifier identity-field)]))
+     (content-items identifier admin-list-view-field)]))
 
 (defn handler [request]
   (->admin-page
