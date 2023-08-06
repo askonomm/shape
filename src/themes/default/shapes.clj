@@ -3,7 +3,7 @@
    [shape.fields :as fields]
    [shape.utils :as utils]))
 
-(defn- blog-post [request]
+(defn blog-post [request]
   {:identifier :post
    :name "Blog Posts"
    :singular-name "Blog Post"
@@ -15,7 +15,7 @@
                           :name "URL Slug"
                           :prefix (str (utils/request->url request)"/blog/")})]})
 
-(defn- page [request]
+(defn page [request]
   {:identifier :page
    :name "Pages"
    :singular-name "Page"
@@ -26,7 +26,3 @@
             (fields/text {:identifier :url-slug
                           :name "URL Slug"
                           :prefix (str (utils/request->url request) "/")})]})
-
-(def shapes
-  [blog-post
-   page])
