@@ -61,8 +61,7 @@ And that's it, pretty straight-forward and this alone should enable the creation
 
 - [x] Site setup flow
 - [x] Authentication flow
-- [ ] Content Shapes implementation - **In progress** 
-- [ ] Content creation in admin panel
-- [ ] Partials implementation
+- [x] Content Shapes implementation
+- [ ] Content creation in admin panel - **In progress**
 - [ ] Pages implementation
 - [ ] Default theme creation
