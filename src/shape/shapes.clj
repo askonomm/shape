@@ -4,7 +4,7 @@
     [shape.utils :as utils]))
 
 (defn- compose-shape-data [request]
-  {:url (utils/request->url request)})
+  {:site/url (utils/request->url request)})
 
 (defn compute-shapes [request]
   (->> (:shapes theme)

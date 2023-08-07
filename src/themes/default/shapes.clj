@@ -2,7 +2,7 @@
   (:require
    [shape.fields.text :refer [text]]))
 
-(defn blog-post [{:keys [url]}]
+(defn blog-post [{:site/keys [url]}]
   {:identifier :post
    :name "Blog Posts"
    :singular-name "Blog Post"
@@ -14,7 +14,7 @@
                    :name "URL Slug"
                    :prefix (str url "/blog/")})]})
 
-(defn page [{:keys [url]}]
+(defn page [{:site/keys [url]}]
   {:identifier :page
    :name "Pages"
    :singular-name "Page"
