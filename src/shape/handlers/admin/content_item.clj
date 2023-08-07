@@ -14,7 +14,8 @@
     [:div.content
      [:div.header
       [:h1 (str "Edit "  (:singular-name shape))]
-      [:a.button.secondary.small {:href (str "/admin/content/" shape-identifier "/item/" content-id "/delete")}
+      [:a.button.secondary.small {:href (str "/admin/content/" shape-identifier "/item/" content-id "/delete")
+                                  :onclick "return confirm('Are you sure you want to delete this item?');"}
        (str "Delete " (:singular-name shape))]]
      (for [{:keys [editable identifier]} fields]
        [:div.field
