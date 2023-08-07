@@ -25,11 +25,14 @@
 
 (defn handler [request]
   (let [shape-identifier (-> request :path-params :identifier)
+        shape-identifier-kw (keyword shape-identifier)
         content-id (-> request :path-params :id)]
     (if (data/content-item-exists? content-id)
       (->admin-page
        [:div.container
         (sidebar request)
         (content request)]
-       {:css ["admin"]})
+       {:css (concat ["shape/css/admin"]
+                     (shapes/css-injections-by-identifier request shape-identifier-kw))
+        :js (shapes/js-injections-by-identifier request shape-identifier-kw)})
       (->redirect (str "/admin/content/" shape-identifier)))))

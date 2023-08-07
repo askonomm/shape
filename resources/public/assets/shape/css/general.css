@@ -47,11 +47,17 @@ textarea {
     padding: 6px 12px;
 }
 
-input {
+input,
+textarea {
     height: 34px;
     box-shadow: inset -2px 2px 6px #eee;
     border: 1px solid #111;
     border-radius: 6px;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+textarea {
+    height: auto;
+    padding: 15px;
 }

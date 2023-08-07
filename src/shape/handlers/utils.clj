@@ -33,8 +33,10 @@
              [:title (:title opts)]
              [:link {:rel "stylesheet" :href "/assets/shape/css/general.css"}]
              (for [css (:css opts)]
-               [:link {:rel "stylesheet" :href (str "/assets/shape/css/" css ".css")}])
-             [:script {:src "https://unpkg.com/htmx.org@1.9.4"}]]
+               [:link {:rel "stylesheet" :href (str "/assets/" css ".css")}])
+             [:script {:src "https://unpkg.com/htmx.org@1.9.4"}]
+             (for [js (:js opts)]
+               [:script {:src (str "/assets/" js ".js")}])]
             [:body {:class (:body-class opts)}
              content]))}))
 

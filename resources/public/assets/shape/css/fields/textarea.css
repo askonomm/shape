@@ -1,0 +1,9 @@
+.textarea-field.editable-field textarea {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.textarea-field.editable-field textarea.auto-size {
+    resize: none;
+}

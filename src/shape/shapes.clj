@@ -19,3 +19,25 @@
   (->> (compute-shapes request)
        (filter #(= (:identifier %) identifier))
        first))
+
+(defn js-injections-by-identifier [request identifier]
+  (->> (compute-shapes request)
+       (filter #(= (:identifier %) identifier))
+       first
+       :fields
+       (map :inject-js)
+       (remove nil?)
+       flatten
+       distinct
+       (into [])))
+
+(defn css-injections-by-identifier [request identifier]
+  (->> (compute-shapes request)
+       (filter #(= (:identifier %) identifier))
+       first
+       :fields
+       (map :inject-css)
+       (remove nil?)
+       flatten
+       distinct
+       (into [])))

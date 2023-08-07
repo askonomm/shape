@@ -35,5 +35,6 @@
   [{:keys [identifier placeholder] :as opts}]
   {:identifier identifier
    :placeholder placeholder
+   :inject-css ["shape/css/fields/text"]
    :editable #(editable (merge opts %))
    :viewable #(viewable (merge opts %))})

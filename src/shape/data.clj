@@ -17,15 +17,17 @@
   ([data]
    (query-one! data false))
   ([data return-keys?]
-   (jdbc/execute-one! (datasource) data {:return-keys return-keys?
-                                         :builder-fn rs/as-unqualified-kebab-maps})))
+   (-> (datasource)
+       (jdbc/execute-one! data {:return-keys return-keys?
+                                :builder-fn rs/as-unqualified-kebab-maps}))))
 
 (defn- query!
   ([data]
    (query! data false))
   ([data return-keys?]
-   (jdbc/execute! (datasource) data {:return-keys return-keys?
-                                     :builder-fn rs/as-unqualified-kebab-maps})))
+   (-> (datasource)
+       (jdbc/execute! data {:return-keys return-keys?
+                            :builder-fn rs/as-unqualified-kebab-maps}))))
 
 (defn user-by-token
   [token]

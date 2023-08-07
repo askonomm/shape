@@ -32,8 +32,11 @@
      (content-items shape-identifier admin-list-view-field)]))
 
 (defn handler [request]
-  (->admin-page
-    [:div.container
-     (sidebar request)
-     (content request)]
-   {:css ["admin"]}))
+  (let [shape-identifier (-> request :path-params :identifier)
+        shape-identifier-kw (keyword shape-identifier)]
+    (->admin-page
+      [:div.container
+       (sidebar request)
+       (content request)]
+      {:css (concat ["shape/css/admin"]
+                    (shapes/css-injections-by-identifier request shape-identifier-kw))})))

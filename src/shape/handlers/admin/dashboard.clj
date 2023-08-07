@@ -14,4 +14,4 @@
    [:div.container
      (sidebar request)
      (content request)]
-   {:css ["admin"]}))
+   {:css ["shape/css/admin"]}))
