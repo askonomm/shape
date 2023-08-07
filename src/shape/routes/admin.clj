@@ -9,6 +9,7 @@
    [shape.handlers.admin.content :as content]
    [shape.handlers.admin.add-content :as add-content]
    [shape.handlers.admin.content-item :as content-item]
+   [shape.handlers.admin.delete-content-item :as delete-content-item]
    [shape.handlers.admin.api.content-item.update-field :as update-field]
    [shape.middlewares :as middlewares]))
 
@@ -74,6 +75,13 @@
                       middlewares/shape-exists?]
          :handler content-item/handler}})
 
+(def ^:private delete-content-item
+  {:get {:responses {200 {:body string?}}
+         :middleware [middlewares/is-setup?
+                      middlewares/is-authenticated?
+                      middlewares/shape-exists?]
+         :handler delete-content-item/handler}})
+
 (def ^:private update-content-item-field
   {:post {:responses {200 {:body {:msg string?}}}
           :middleware [middlewares/is-setup?
@@ -90,4 +98,5 @@
    ["/content/:identifier" content]
    ["/content/:identifier/add" add-content]
    ["/content/:identifier/item/:id" content-item]
+   ["/content/:identifier/item/:id/delete" delete-content-item]
    ["/api/content-item/:id/update-field" update-content-item-field]])

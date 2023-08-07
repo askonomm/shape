@@ -75,14 +75,9 @@ body {
 
 .content .header h1 {
     font-size: 19px;
-    font-weight: 500;
+    font-weight: 600;
     color: #111;
     line-height: 1;
-}
-
-.content .header .button.primary {
-    font-size: 11px;
-    text-decoration: none;
 }
 
 /**
@@ -138,7 +133,7 @@ body {
 }
 
 .content .text-field.viewable-field span {
-    font-size: 15px;
+    font-size: 14px;
     color: #111;
     text-decoration: none;
 }

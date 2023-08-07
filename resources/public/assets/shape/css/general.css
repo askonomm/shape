@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import "colors.css";
 
 * {
@@ -9,43 +10,36 @@
 }
 
 body {
-    font-family: system-ui;
+    font-family: 'Inter', system-ui;
     font-size: 14px;
 }
 
 input,
 textarea {
-    font-family: system-ui;
-    border-radius: 0px;
+    font-family: 'Inter', system-ui;
+    border-radius: 0;
 }
 
 .button {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     border-radius: 25px;
     transition: all 0.1s ease-in-out;
     cursor: pointer;
     text-transform: uppercase;
+    text-decoration: none;
+    color: #111;
     padding: 12px 15px;
 }
 
 .button.primary {
     color: #fff;
-    background: linear-gradient(#373737, #272727);
-    box-shadow: 0 1px 6px rgba(0,0,0,.15);
-    border: 1px solid transparent;
-}
-
-.button.primary:hover {
-    color: var(--primary-color);
-    text-shadow: 0 1px 0 rgba(255,255,255,.25);
-    background: linear-gradient(var(--brand-color-light), var(--brand-color));
-    border: 1px solid rgba(0,0,0,.35);
-    border-bottom: 1px solid rgba(0,0,0,.5);
+    background: linear-gradient(#444, #333);
+    box-shadow: 0 1px 6px rgba(0,0,0,.1);
 }
 
 .button.secondary {
-    background: linear-gradient(#fafafa, #fff);
+    background: linear-gradient(#fff, #fafafa);
     border: 1px solid #ddd;
 }
 

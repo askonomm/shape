@@ -19,17 +19,17 @@
          (viewable {:value value})]]))])
 
 (defn- content [request]
-  (let [identifier (-> request :path-params :identifier)
-        identifier-kw (keyword identifier)
-        shape (shapes/first-by-identifier request identifier-kw)
+  (let [shape-identifier (-> request :path-params :identifier)
+        shape-identifier-kw (keyword shape-identifier)
+        shape (shapes/first-by-identifier request shape-identifier-kw)
         admin-list-view-field-identifier (:admin-list-view-field shape)
         admin-list-view-field (->> shape :fields (filter #(= (:identifier %) admin-list-view-field-identifier)) first)]
     [:div.content
      [:div.header
       [:h1 (:name shape)]
-      [:a.button.primary.small {:href (str "/admin/content/" identifier "/add")}
+      [:a.button.primary.small {:href (str "/admin/content/" shape-identifier "/add")}
        (str "Add " (:singular-name shape))]]
-     (content-items identifier admin-list-view-field)]))
+     (content-items shape-identifier admin-list-view-field)]))
 
 (defn handler [request]
   (->admin-page

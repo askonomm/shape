@@ -6,13 +6,16 @@
     [shape.shapes :as shapes]))
 
 (defn- content [request]
-  (let [shape-identifier-kw (-> request :path-params :identifier keyword)
+  (let [shape-identifier (-> request :path-params :identifier)
+        shape-identifier-kw (keyword shape-identifier)
         content-id (-> request :path-params :id)
         shape (shapes/first-by-identifier request shape-identifier-kw)
         fields (:fields shape)]
     [:div.content
      [:div.header
-      [:h1 (str "Edit "  (:singular-name shape))]]
+      [:h1 (str "Edit "  (:singular-name shape))]
+      [:a.button.secondary.small {:href (str "/admin/content/" shape-identifier "/item/" content-id "/delete")}
+       (str "Delete " (:singular-name shape))]]
      (for [{:keys [editable identifier]} fields]
        [:div.field
         (editable

@@ -106,3 +106,8 @@
       (query-one! [sql field-value content-id field-identifier]))
     (let [sql "INSERT INTO content_fields (content_id, field_identifier, field_value) VALUES (?, ?, ?)"]
       (query-one! [sql content-id field-identifier field-value]))))
+
+(defn delete-content-item!
+  [content-id]
+  (let [sql "DELETE FROM content WHERE id = ?"]
+    (query-one! [sql content-id])))
