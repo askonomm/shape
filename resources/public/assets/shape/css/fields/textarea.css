@@ -2,8 +2,10 @@
     width: 100%;
     max-width: 100%;
     height: auto;
+    outline: none;
 }
 
 .textarea-field.editable-field textarea.auto-size {
+    height: 0;
     resize: none;
 }
