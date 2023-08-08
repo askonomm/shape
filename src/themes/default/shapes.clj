@@ -1,7 +1,8 @@
 (ns themes.default.shapes
   (:require
    [shape.fields.text :refer [text]]
-   [shape.fields.textarea :refer [textarea]]))
+   [shape.fields.textarea :refer [textarea]]
+   [shape.fields.date :refer [date]]))
 
 (defn blog-post [{:site/keys [url]}]
   {:identifier :post
@@ -16,7 +17,9 @@
                    :prefix (str url "/blog/")})
             (textarea {:identifier :content
                        :name "Content"
-                       :auto-size? true})]})
+                       :auto-size? true})
+            (date {:identifier :published-at
+                   :name "Published At"})]})
 
 (defn page [{:site/keys [url]}]
   {:identifier :page
@@ -28,4 +31,7 @@
                    :name "Title"})
             (text {:identifier :url-slug
                    :name "URL Slug"
-                   :prefix (str url "/")})]})
+                   :prefix (str url "/")})
+            (textarea {:identifier :content
+                       :name "Content"
+                       :auto-size? true})]})
