@@ -14,13 +14,10 @@
 
 .text-field.viewable-field {
     display: inline-block;
-    height: 34px;
-    line-height: 34px;
     border: 1px solid #ddd;
     border-radius: 6px;
     transition: all 0.15s ease-in-out;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 10px 15px;
 }
 
 .text-field.viewable-field:hover {
