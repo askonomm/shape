@@ -10,7 +10,7 @@
    :admin-list-view-field :title
    :fields [(text {:identifier :title
                    :placeholder "Untitled ..."
-                   :name "Post Title"})
+                   :name "Title"})
             (text {:identifier :url-slug
                    :name "URL Slug"
                    :prefix (str url "/blog/")})
@@ -25,7 +25,7 @@
    :admin-list-view-field :title
    :fields [(text {:identifier :title
                    :placeholder "Untitled ..."
-                   :name "Page Title"})
+                   :name "Title"})
             (text {:identifier :url-slug
                    :name "URL Slug"
                    :prefix (str url "/")})]})
