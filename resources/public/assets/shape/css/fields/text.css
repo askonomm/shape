@@ -2,22 +2,15 @@
     display: flex;
 }
 
-.content-items a {
-    display: block;
-    text-decoration: none;
-    margin-bottom: 15px;
-}
-
-.content-items a:last-child {
-    margin-bottom: 0;
-}
-
 .text-field.viewable-field {
     display: inline-block;
+    height: 30px;
+    line-height: 28px;
     border: 1px solid #ddd;
     border-radius: 6px;
     transition: all 0.15s ease-in-out;
-    padding: 10px 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .text-field.viewable-field:hover {
@@ -25,7 +18,8 @@
 }
 
 .text-field.viewable-field span {
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 500;
     color: #111;
     text-decoration: none;
 }

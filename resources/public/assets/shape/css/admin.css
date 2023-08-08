@@ -83,21 +83,37 @@ body {
 /**
  * FIELDS
 */
-.content .field {
+.content-editor .field {
     margin-bottom: 25px;
 }
 
-.content .field:last-child {
+.content-editor .field:last-child {
     margin-bottom: 0;
 }
 
-.content .field label {
+.content-editor .field label {
     font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
     color: #777;
 }
 
-.content .field label > div {
+.content-editor .field label > div {
     margin-top: 5px;
+}
+
+/**
+ * CONTENT ITEMS
+ */
+.content-items a {
+    display: flex;
+    max-height: 30px;
+    align-items: center;
+    text-decoration: none;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.content-items a:last-child {
+    margin-bottom: 0;
 }
