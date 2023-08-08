@@ -1,14 +1,16 @@
 (ns themes.default.shapes
   (:require
-   [shape.fields.text :refer [text]]
-   [shape.fields.textarea :refer [textarea]]
-   [shape.fields.date :refer [date]]))
+    [shape.fields.text :refer [text]]
+    [shape.fields.textarea :refer [textarea]]
+    [shape.fields.date :refer [date]]
+    [themes.default.utils :as utils]))
 
 (defn blog-post [{:site/keys [url]}]
   {:identifier :post
    :name "Blog Posts"
    :singular-name "Blog Post"
-   :admin-list-view-field :title
+   :admin-list-view-field [:title :published-at]
+   :admin-list-view-sort-fn utils/sort-by-published-at
    :fields [(text {:identifier :title
                    :placeholder "Untitled ..."
                    :name "Title"})

@@ -17,11 +17,12 @@
       [:a.button.secondary.small {:href (str "/admin/content/" shape-identifier "/item/" content-id "/delete")
                                   :onclick "return confirm('Are you sure you want to delete this item?');"}
        (str "Delete " (:singular-name shape))]]
-     (for [{:keys [editable identifier]} fields]
-       [:div.field
-        (editable
-          {:value (:field-value (data/content-item-field content-id (name identifier)))
-           :content-id (Integer/parseInt content-id)})])]))
+     [:div.content-editor
+      (for [{:keys [editable identifier]} fields]
+        [:div.field
+         (editable
+           {:value (:field-value (data/content-item-field content-id (name identifier)))
+            :content-id (Integer/parseInt content-id)})])]]))
 
 (defn handler [request]
   (let [shape-identifier (-> request :path-params :identifier)

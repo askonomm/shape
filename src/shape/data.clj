@@ -82,8 +82,12 @@
     (pw/check password (:password user))))
 
 (defn content-items [identifier]
-  (let [sql "SELECT * FROM content WHERE shape_identifier = ?"]
-    (query! [sql identifier])))
+  (let [sql "SELECT * FROM content WHERE shape_identifier = ?"
+        items (query! [sql identifier])
+        sql-fields "SELECT * FROM content_fields WHERE content_id = ?"]
+    (->> items
+         (map (fn [item]
+                (assoc item :fields (query! [sql-fields (:id item)])))))))
 
 (defn content-item-exists? [id]
   (let [sql "SELECT * FROM content WHERE id = ?"]
