@@ -14,7 +14,7 @@
              :placeholder placeholder
              :name (name identifier)
              :hx-post (str "/admin/api/content-item/" content-id "/update-field")
-             :hx-trigger "keyup changed delay:250ms"}]
+             :hx-trigger "input changed delay:250ms"}]
     (when suffix
       [:span.suffix suffix])]])
 
