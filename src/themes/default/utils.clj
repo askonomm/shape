@@ -9,7 +9,7 @@
   (sort-by
     (fn [item]
       (if-let [field (->> item :fields (filter #(= (:identifier %) "published-at")) first)]
-        (date-str->epoch (:field-value field) "yyyy-MM-dd")
+        (date-str->epoch (:value field) "yyyy-MM-dd")
         (.getTime (Date.))))
     #(> %1 %2)
     items))
