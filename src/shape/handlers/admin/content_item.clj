@@ -14,15 +14,15 @@
     [:div.content
      [:div.header
       [:h1 (str "Edit "  (:singular-name shape))]
-      [:a.button.secondary.small {:href (str "/admin/content/" shape-identifier "/item/" content-id "/delete")
-                                  :onclick "return confirm('Are you sure you want to delete this item?');"}
+      [:a.button.secondary.small
+       {:href (str "/admin/content/" shape-identifier "/item/" content-id "/delete")
+        :onclick "return confirm('Are you sure you want to delete this item?');"}
        (str "Delete " (:singular-name shape))]]
      [:div.content-editor
       (for [{:keys [editable identifier]} fields]
         [:div.field
          (editable
-           {:value (:value (data/content-item-field content-id (name identifier)))
-            :content-id (Integer/parseInt content-id)})])]]))
+           (data/content-item-field content-id (name identifier)))])]]))
 
 (defn handler [request]
   (let [shape-identifier (-> request :path-params :identifier)
