@@ -2,14 +2,13 @@
  * GENERIC
 */
 body {
+    min-height: 100vh;
     font-size: 14px;
     background: #fff;
 }
 
 .container {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    width: 940px;
+    width: 720px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -18,7 +17,13 @@ body {
  * SIDEBAR
 */
 .sidebar {
-    padding-top: 24px;
+    width: 200px;
+    min-height: 100vh;
+    position: fixed;
+    padding-top: 125px;
+    padding-bottom: 24px;
+    top: 0;
+    margin-left: -200px;
 }
 
 .sidebar .logo {
@@ -27,7 +32,9 @@ body {
     background: url(../images/logo.png) no-repeat;
     image-rendering: crisp-edges;
     background-size: cover;
-    margin-bottom: 34px;
+    position: fixed;
+    top: 24px;
+    left: 24px;
 }
 
 .sidebar a {
@@ -36,30 +43,46 @@ body {
     margin-bottom: 10px;
 }
 
+.sidebar a.active:before {
+    display: block;
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #111;
+    border-radius: 100%;
+    position: absolute;
+    top: 11px;
+    left: -20px;
+}
+
 .sidebar .secondary-menu {
     margin-top: 100px;
 }
+
 
 /**
  * CONTENT
 */
 .content {
-    align-self: baseline;
+    min-height: 100vh;
+    padding-top: 123px;
+    padding-bottom: 24px;
+}
+
+.content .inner-content {
+    width: 100%;
 }
 
 .content .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #bbb;
-    padding-top: 24px;
-    padding-bottom: 24px;
     margin-bottom: 24px;
 }
 
 .content .header h1 {
-    font-size: 19px;
-    font-weight: 500;
+    font-size: 21px;
+    font-weight: 700;
     color: #111;
     line-height: 1;
 }

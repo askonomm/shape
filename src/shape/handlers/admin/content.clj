@@ -36,13 +36,14 @@
         list-view-fields (->> shape :fields (filter list-view-fields-filter-fn))
         list-view-sort-fn (:admin-list-view-sort-fn shape)]
     [:div.content
-     [:div.header
-      [:h1 (:name shape)]
-      [:a.button.primary.small {:href (str "/admin/content/" shape-identifier "/add")}
-       (str "Add " (:singular-name shape))]]
-     (content-items {:shape-identifier shape-identifier
-                     :list-view-fields list-view-fields
-                     :list-view-sort-fn list-view-sort-fn})]))
+     [:div.inner-content
+      [:div.header
+       [:h1 (:name shape)]
+       [:a.button.primary.small {:href (str "/admin/content/" shape-identifier "/add")}
+        (str "Add " (:singular-name shape))]]
+      (content-items {:shape-identifier shape-identifier
+                      :list-view-fields list-view-fields
+                      :list-view-sort-fn list-view-sort-fn})]]))
 
 (defn handler [request]
   (let [shape-identifier (-> request :path-params :identifier)

@@ -13,8 +13,9 @@
 (defn sidebar
   [request]
   [:div.sidebar
-   [:div.logo]
-   [:div.menu
-    (list-shapes request)]
-   [:div.secondary-menu
-    [:a.button.secondary.small {:href "/admin/logout"} "Log out"]]])
+   [:div
+    [:div.logo]
+    [:div.menu
+     (list-shapes request)]
+    [:div.secondary-menu
+     [:a.button.secondary.small {:href "/admin/logout"} "Log out"]]]])
