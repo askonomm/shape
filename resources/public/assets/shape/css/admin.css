@@ -9,7 +9,7 @@ body {
 .container {
     display: grid;
     grid-template-columns: 200px 1fr;
-    width: 860px;
+    width: 940px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -23,7 +23,7 @@ body {
 
 .sidebar a {
     display: block;
-    font-size: 16px;
+    font-size: 15px;
     color: #777;
     text-decoration: none;
     margin-bottom: 10px;
@@ -38,7 +38,7 @@ body {
 }
 .sidebar a.active {
     color: #111;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .sidebar .secondary-menu {
@@ -66,15 +66,20 @@ body {
 
 .content .header {
     display: flex;
+    width: calc(100% + 60px);
     justify-content: space-between;
     align-items: center;
+    background: linear-gradient(#fff, #fafafa);
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
     border-bottom: 1px solid #ddd;
-    padding-bottom: 15px;
+    padding: 25px 30px;
+    margin-top: -30px;
+    margin-left: -30px;
     margin-bottom: 15px;
 }
 
 .content .header h1 {
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 600;
     color: #111;
     line-height: 1;
@@ -83,6 +88,10 @@ body {
 /**
  * FIELDS
 */
+.content-editor {
+    padding-top: 10px;
+}
+
 .content-editor .field {
     margin-bottom: 25px;
 }
@@ -99,21 +108,34 @@ body {
 }
 
 .content-editor .field label > div {
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
 /**
  * CONTENT ITEMS
  */
+.content-items {
+    margin-top: -15px;
+    margin-bottom: -30px;
+}
+
 .content-items a {
     display: flex;
-    max-height: 30px;
+    width: calc(100% + 60px);
     align-items: center;
     text-decoration: none;
     gap: 20px;
-    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding: 24px 30px;
+    margin-left: -30px;
+}
+
+.content-items a:hover {
+    background: #fafafa;
 }
 
 .content-items a:last-child {
-    margin-bottom: 0;
+    border-bottom: 0;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
