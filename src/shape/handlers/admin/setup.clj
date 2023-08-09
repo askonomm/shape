@@ -32,7 +32,7 @@
   [request]
   (->admin-page
     (view-handler-page request)
-    {:css ["wall"]
+    {:css ["shape/css/wall"]
      :body-class "wall"}))
 
 (defn- create-user-and-set-token! [email password token]

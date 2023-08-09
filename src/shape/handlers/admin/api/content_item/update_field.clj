@@ -5,7 +5,7 @@
 
 (defn handler [request]
   (let [content-id (-> request :path-params :id)
-        field-identifier (-> request :form-params keys first)
-        field-value (-> request :form-params vals first)]
-    (data/set-content-item-field! content-id field-identifier field-value)
+        identifier (-> request :form-params keys first)
+        value (-> request :form-params vals first)]
+    (data/set-content-item-field! content-id identifier value)
     (->json {:msg "Field updated."})))

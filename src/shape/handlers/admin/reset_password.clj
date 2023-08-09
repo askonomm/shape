@@ -26,7 +26,7 @@
 (defn view-handler [request]
   (->admin-page
    (view-handler-page request)
-   {:css ["wall"]
+   {:css ["shape/css/wall"]
     :body-class "wall"}))
 
 (defn action-handler [request]

@@ -93,9 +93,9 @@
   (let [sql "SELECT * FROM content WHERE id = ?"]
     (boolean (query-one! [sql id]))))
 
-(defn content-item-field [content-id field-identifier]
-  (let [sql "SELECT * FROM content_fields WHERE content_id = ? AND field_identifier = ?"]
-    (query-one! [sql content-id field-identifier])))
+(defn content-item-field [content-id identifier]
+  (let [sql "SELECT * FROM content_fields WHERE content_id = ? AND identifier = ?"]
+    (query-one! [sql content-id identifier])))
 
 (defn create-content-item!
   [{:keys [shape-identifier]}]
@@ -106,12 +106,12 @@
     (kw result)))
 
 (defn set-content-item-field!
-  [content-id field-identifier field-value]
-  (if (query-one! ["SELECT * FROM content_fields WHERE content_id = ? AND field_identifier = ?" content-id field-identifier])
-    (let [sql "UPDATE content_fields SET field_value = ? WHERE content_id = ? AND field_identifier = ?"]
-      (query-one! [sql field-value content-id field-identifier]))
-    (let [sql "INSERT INTO content_fields (content_id, field_identifier, field_value) VALUES (?, ?, ?)"]
-      (query-one! [sql content-id field-identifier field-value]))))
+  [content-id identifier value]
+  (if (query-one! ["SELECT * FROM content_fields WHERE content_id = ? AND identifier = ?" content-id identifier])
+    (let [sql "UPDATE content_fields SET value = ? WHERE content_id = ? AND identifier = ?"]
+      (query-one! [sql value content-id identifier]))
+    (let [sql "INSERT INTO content_fields (content_id, identifier, value) VALUES (?, ?, ?)"]
+      (query-one! [sql content-id identifier value]))))
 
 (defn delete-content-item!
   [content-id]
