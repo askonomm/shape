@@ -9,6 +9,9 @@
     border: 1px solid #ddd;
     border-radius: 6px;
     transition: all 0.15s ease-in-out;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     padding-left: 15px;
     padding-right: 15px;
 }

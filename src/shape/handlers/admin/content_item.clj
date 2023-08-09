@@ -20,11 +20,19 @@
          :onclick "return confirm('Are you sure you want to delete this item?');"}
         (str "Delete " (:singular-name shape))]]
       [:div.content-editor
-       (for [{:keys [editable identifier]} fields]
-         [:div.field
-          (editable
-            {:value (:value (data/content-item-field content-id (name identifier)))
-             :content-id content-id})])]]]))
+       (for [field fields]
+         (if (vector? field)
+           [:div.horizontal-fields
+            (for [{:keys [editable identifier]} field]
+              [:div.field
+               (editable
+                 {:value (:value (data/content-item-field content-id (name identifier)))
+                  :content-id content-id})])]
+           (let [{:keys [editable identifier]} field]
+             [:div.field
+              (editable
+                {:value (:value (data/content-item-field content-id (name identifier)))
+                 :content-id content-id})])))]]]))
 
 (defn handler [request]
   (let [shape-identifier (-> request :path-params :identifier)

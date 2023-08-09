@@ -8,6 +8,10 @@
     border: 1px solid #ddd;
     border-radius: 25px;
     transition: all 0.15s ease-in-out;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    overflow: hidden;
     padding-left: 15px;
     padding-right: 15px;
 }

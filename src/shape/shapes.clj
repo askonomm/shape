@@ -25,6 +25,7 @@
        (filter #(= (:identifier %) identifier))
        first
        :fields
+       flatten
        (map :inject-js)
        (remove nil?)
        flatten
@@ -36,6 +37,7 @@
        (filter #(= (:identifier %) identifier))
        first
        :fields
+       flatten
        (map :inject-css)
        (remove nil?)
        flatten

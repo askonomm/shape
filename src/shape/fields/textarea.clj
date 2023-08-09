@@ -17,9 +17,10 @@
 (defn- viewable
   "Render a textarea field as a viewable view."
   [{:keys [value]}]
-  [:div.textarea-field.viewable-field
-   [:div.value (->> (string/split value #"\n")
-                    (interpose [:br]))]])
+  (when-not (string/blank? value)
+    [:div.textarea-field.viewable-field
+     [:div.value (->> (string/split value #"\n")
+                      (interpose [:br]))]]))
 
 (defn textarea
   "Instance of a textarea field, best suited for long text fields."

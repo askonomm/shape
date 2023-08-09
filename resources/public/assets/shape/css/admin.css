@@ -37,21 +37,28 @@ body {
     left: 24px;
 }
 
-.sidebar a {
+.sidebar a:not(.button) {
     display: inline-block;
+    font-size: 19px;
+    color: #777;
+    text-decoration: none;
     border-radius: 25px;
     margin-bottom: 10px;
+}
+
+.sidebar a.active {
+    color: #111;
 }
 
 .sidebar a.active:before {
     display: block;
     content: '';
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     background: #111;
     border-radius: 100%;
     position: absolute;
-    top: 11px;
+    top: 9px;
     left: -20px;
 }
 
@@ -65,7 +72,7 @@ body {
 */
 .content {
     min-height: 100vh;
-    padding-top: 123px;
+    padding-top: 121px;
     padding-bottom: 24px;
 }
 
@@ -85,6 +92,7 @@ body {
     font-weight: 700;
     color: #111;
     line-height: 1;
+    letter-spacing: -0.45px;
 }
 
 /**
@@ -109,6 +117,11 @@ body {
     margin-top: 8px;
 }
 
+.content-editor .horizontal-fields {
+    display: flex;
+    gap: 24px;
+}
+
 /**
  * CONTENT ITEMS
  */
@@ -117,6 +130,7 @@ body {
     align-items: center;
     text-decoration: none;
     gap: 20px;
+    row-gap: 10px;
     border-bottom: 1px solid #ddd;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -128,4 +142,9 @@ body {
 
 .content-items a:hover .viewable-field {
     border: 1px solid #111;
+}
+
+.content-items a .field {
+    display: inline-flex;
+    overflow: hidden;
 }

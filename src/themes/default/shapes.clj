@@ -20,9 +20,12 @@
             (textarea {:identifier :content
                        :name "Content"
                        :auto-size? true})
-            (date {:identifier :published-at
-                   :name "Published At"
-                   :format "MMMM dd, yyyy"})]})
+            [(date {:identifier :published-at
+                    :name "Published At"
+                    :format "MMMM dd, yyyy"})
+             (date {:identifier :status
+                    :name "Status"
+                    :options ["Draft" "Published"]})]]})
 
 (defn page [{:site/keys [url]}]
   {:identifier :page

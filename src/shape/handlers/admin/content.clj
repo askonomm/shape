@@ -33,7 +33,7 @@
                                        [(:admin-list-view-field shape)])
         list-view-fields-filter-fn (fn [field]
                                      (some #(= (:identifier field) %) list-view-fields-identifiers))
-        list-view-fields (->> shape :fields (filter list-view-fields-filter-fn))
+        list-view-fields (->> shape :fields flatten (filter list-view-fields-filter-fn))
         list-view-sort-fn (:admin-list-view-sort-fn shape)]
     [:div.content
      [:div.inner-content

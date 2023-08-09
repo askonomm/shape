@@ -1,11 +1,15 @@
 .textarea-field.viewable-field {
     display: inline-block;
+    overflow: hidden;
     height: 34px;
     line-height: 32px;
     border: 1px solid #ddd;
     border-radius: 6px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     transition: all 0.15s ease-in-out;
-    padding: 10px 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .textarea-field.viewable-field .value {
