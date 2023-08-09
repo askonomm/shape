@@ -1,4 +1,4 @@
-.date-field.viewable-field {
+.select-field.viewable-field {
     display: inline-block;
     font-size: 13px;
     height: 34px;
@@ -16,6 +16,6 @@
     padding-right: 15px;
 }
 
-.date-field.viewable-field i {
+.select-field.viewable-field i {
     margin-right: 10px;
 }

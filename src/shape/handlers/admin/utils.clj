@@ -16,6 +16,6 @@
    [:div
     [:div.logo]
     [:div.menu
-     (list-shapes request)]
-    [:div.secondary-menu
-     [:a.button.secondary.small {:href "/admin/logout"} "Log out"]]]])
+     (list-shapes request)
+     [:a {:href "/admin/logout"} "Log out"]]]])
+

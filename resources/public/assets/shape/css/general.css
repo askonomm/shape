@@ -16,7 +16,8 @@ body {
 }
 
 input,
-textarea {
+textarea,
+select {
     font-family: 'Inter', system-ui;
     border-radius: 0;
 }
@@ -45,12 +46,19 @@ textarea {
     border: 1px solid #ddd;
 }
 
+.button.warning {
+    background: transparent;
+    color: red;
+    border: 1px solid red;
+}
+
 .button.small {
     padding: 8px 14px;
 }
 
 input,
-textarea {
+textarea,
+select {
     height: 38px;
     box-shadow: inset -2px 2px 6px #fafafa;
     border: 1px solid #bbb;

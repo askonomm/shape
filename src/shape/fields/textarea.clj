@@ -1,5 +1,6 @@
 (ns shape.fields.textarea
-  (:require [clojure.string :as string]))
+  (:require
+    [clojure.string :as string]))
 
 (defn- editable
   "Render a textarea field as an editable view."
@@ -19,8 +20,7 @@
   [{:keys [value]}]
   (when-not (string/blank? value)
     [:div.textarea-field.viewable-field
-     [:div.value (->> (string/split value #"\n")
-                      (interpose [:br]))]]))
+     value]))
 
 (defn textarea
   "Instance of a textarea field, best suited for long text fields."

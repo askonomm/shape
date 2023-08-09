@@ -27,8 +27,8 @@ body {
 }
 
 .sidebar .logo {
-    width: 44px;
-    height: 44px;
+    width: 34px;
+    height: 34px;
     background: url(../images/logo.png) no-repeat;
     image-rendering: crisp-edges;
     background-size: cover;
@@ -37,35 +37,18 @@ body {
     left: 24px;
 }
 
-.sidebar a:not(.button) {
+.sidebar a {
     display: inline-block;
     font-size: 19px;
-    color: #777;
+    color: #999;
     text-decoration: none;
-    border-radius: 25px;
+    letter-spacing: -0.5px;
     margin-bottom: 10px;
 }
 
 .sidebar a.active {
     color: #111;
 }
-
-.sidebar a.active:before {
-    display: block;
-    content: '';
-    width: 5px;
-    height: 5px;
-    background: #111;
-    border-radius: 100%;
-    position: absolute;
-    top: 9px;
-    left: -20px;
-}
-
-.sidebar .secondary-menu {
-    margin-top: 100px;
-}
-
 
 /**
  * CONTENT
@@ -82,14 +65,14 @@ body {
 
 .content .header {
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 34px;
 }
 
 .content .header h1 {
-    font-size: 21px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 600;
     color: #111;
     line-height: 1;
     letter-spacing: -0.45px;

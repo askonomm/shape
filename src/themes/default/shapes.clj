@@ -3,6 +3,7 @@
     [shape.fields.text :refer [text]]
     [shape.fields.textarea :refer [textarea]]
     [shape.fields.date :refer [date]]
+    [shape.fields.select :refer [select]]
     [themes.default.utils :as utils]))
 
 (defn blog-post [{:site/keys [url]}]
@@ -20,12 +21,12 @@
             (textarea {:identifier :content
                        :name "Content"
                        :auto-size? true})
-            [(date {:identifier :published-at
+            [(select {:identifier :status
+                      :name "Status"
+                      :options ["Draft" "Published"]})
+             (date {:identifier :published-at
                     :name "Published At"
-                    :format "MMMM dd, yyyy"})
-             (date {:identifier :status
-                    :name "Status"
-                    :options ["Draft" "Published"]})]]})
+                    :format "MMMM dd, yyyy"})]]})
 
 (defn page [{:site/keys [url]}]
   {:identifier :page

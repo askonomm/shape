@@ -6,18 +6,14 @@
     display: inline-block;
     height: 34px;
     line-height: 32px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    transition: all 0.15s ease-in-out;
     text-overflow: ellipsis;
     white-space: nowrap;
+    border: 0 !important;
     overflow: hidden;
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
 .text-field.viewable-field span {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
     color: #111;
     text-decoration: none;

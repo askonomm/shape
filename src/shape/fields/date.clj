@@ -1,7 +1,9 @@
 (ns shape.fields.date
-  (:require [clojure.string :as string])
-  (:import (java.text SimpleDateFormat)
-           (java.util Date)))
+  (:require
+    [clojure.string :as string])
+  (:import
+    (java.text SimpleDateFormat)
+    (java.util Date)))
 
 (defn- editable
   "Render a date field as an editable view."
