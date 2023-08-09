@@ -21,7 +21,7 @@
       (for [{:keys [editable identifier]} fields]
         [:div.field
          (editable
-           {:value (:field-value (data/content-item-field content-id (name identifier)))
+           {:value (:value (data/content-item-field content-id (name identifier)))
             :content-id (Integer/parseInt content-id)})])]]))
 
 (defn handler [request]
