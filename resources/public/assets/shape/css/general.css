@@ -25,7 +25,7 @@ select {
 .button {
     font-size: 11px;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 15px;
     transition: all 0.1s ease-in-out;
     cursor: pointer;
     text-transform: uppercase;

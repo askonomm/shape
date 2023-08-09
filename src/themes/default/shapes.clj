@@ -10,7 +10,7 @@
   {:identifier :post
    :name "Blog Posts"
    :singular-name "Blog Post"
-   :admin-list-view-field [:title :published-at]
+   :admin-list-view-field [:title :status :published-at]
    :admin-list-view-sort-fn utils/sort-by-published-at
    :fields [(text {:identifier :title
                    :placeholder "Untitled ..."

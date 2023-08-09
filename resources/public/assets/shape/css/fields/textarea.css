@@ -1,8 +1,8 @@
 .textarea-field.viewable-field {
     display: inline-block;
     overflow: hidden;
-    height: 34px;
-    line-height: 32px;
+    height: 30px;
+    line-height: 30px;
     text-overflow: ellipsis;
     font-size: 15px;
     color: #999;

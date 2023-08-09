@@ -4,8 +4,8 @@
 
 .text-field.viewable-field {
     display: inline-block;
-    height: 34px;
-    line-height: 32px;
+    height: 30px;
+    line-height: 30px;
     text-overflow: ellipsis;
     white-space: nowrap;
     border: 0 !important;
