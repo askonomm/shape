@@ -21,7 +21,8 @@
                        :name "Content"
                        :auto-size? true})
             (date {:identifier :published-at
-                   :name "Published At"})]})
+                   :name "Published At"
+                   :format "MMMM dd, yyyy"})]})
 
 (defn page [{:site/keys [url]}]
   {:identifier :page

@@ -5,12 +5,12 @@ body.wall {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: #f7f7f7;
+    background: #fafafa;
 }
 
 .logo {
     width: 75px;
-    height: 76.52px;
+    height: 75px;
     background: url(../images/logo.png) no-repeat;
     background-size: cover;
     margin-left: auto;
@@ -49,8 +49,8 @@ form {
     text-align: left;
     line-height: 1.45;
     background: #fff;
-    box-shadow: 0 2px 16px rgba(0,0,0,.1);
-    border: 1px solid #111;
+    box-shadow: 0 2px 16px rgba(0,0,0,.05);
+    border: 1px solid #bbb;
     border-radius: 6px;
     padding: 25px;
     margin-top: 25px;

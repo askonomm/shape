@@ -1,13 +1,11 @@
 .textarea-field.viewable-field {
     display: inline-block;
+    height: 34px;
+    line-height: 32px;
     border: 1px solid #ddd;
     border-radius: 6px;
     transition: all 0.15s ease-in-out;
     padding: 10px 15px;
-}
-
-.textarea-field.viewable-field:hover {
-    border: 1px solid #111;
 }
 
 .textarea-field.viewable-field .value {
@@ -15,7 +13,6 @@
     color: #111;
     text-decoration: none;
     overflow: hidden;
-    max-height: 20px;
 }
 
 .textarea-field.viewable-field .value:before {

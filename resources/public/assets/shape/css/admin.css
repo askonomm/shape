@@ -3,7 +3,7 @@
 */
 body {
     font-size: 14px;
-    background: #f7f7f7;
+    background: #fff;
 }
 
 .container {
@@ -18,35 +18,26 @@ body {
  * SIDEBAR
 */
 .sidebar {
-    padding-top: 30px;
+    padding-top: 24px;
+}
+
+.sidebar .logo {
+    width: 44px;
+    height: 44px;
+    background: url(../images/logo.png) no-repeat;
+    image-rendering: crisp-edges;
+    background-size: cover;
+    margin-bottom: 34px;
 }
 
 .sidebar a {
-    display: block;
-    font-size: 15px;
-    color: #777;
-    text-decoration: none;
+    display: inline-block;
+    border-radius: 25px;
     margin-bottom: 10px;
-}
-
-.sidebar a:first-child {
-    margin-bottom: 30px;
-}
-
-.sidebar a:hover {
-    color: #111;
-}
-.sidebar a.active {
-    color: #111;
-    font-weight: 500;
 }
 
 .sidebar .secondary-menu {
     margin-top: 100px;
-}
-
-.sidebar .secondary-menu a {
-    font-size: 13px;
 }
 
 /**
@@ -54,33 +45,21 @@ body {
 */
 .content {
     align-self: baseline;
-    background: #fff;
-    box-shadow: 0 2px 16px rgba(0,0,0,.1);
-    border-left: 1px solid #111;
-    border-right: 1px solid #111;
-    border-bottom: 1px solid #111;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-    padding: 25px 30px 30px;
 }
 
 .content .header {
     display: flex;
-    width: calc(100% + 60px);
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(#fff, #fafafa);
-    box-shadow: 0 2px 8px rgba(0,0,0,.05);
-    border-bottom: 1px solid #ddd;
-    padding: 25px 30px;
-    margin-top: -30px;
-    margin-left: -30px;
-    margin-bottom: 15px;
+    border-bottom: 1px solid #bbb;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
 }
 
 .content .header h1 {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 19px;
+    font-weight: 500;
     color: #111;
     line-height: 1;
 }
@@ -88,10 +67,6 @@ body {
 /**
  * FIELDS
 */
-.content-editor {
-    padding-top: 10px;
-}
-
 .content-editor .field {
     margin-bottom: 25px;
 }
@@ -114,28 +89,20 @@ body {
 /**
  * CONTENT ITEMS
  */
-.content-items {
-    margin-top: -15px;
-    margin-bottom: -30px;
-}
-
 .content-items a {
     display: flex;
-    width: calc(100% + 60px);
     align-items: center;
     text-decoration: none;
     gap: 20px;
-    border-bottom: 1px solid #eee;
-    padding: 24px 30px;
-    margin-left: -30px;
-}
-
-.content-items a:hover {
-    background: #fafafa;
+    border-bottom: 1px solid #ddd;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .content-items a:last-child {
     border-bottom: 0;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
+}
+
+.content-items a:hover .viewable-field {
+    border: 1px solid #111;
 }

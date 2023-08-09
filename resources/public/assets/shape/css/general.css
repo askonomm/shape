@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "../fa/css/all.min.css";
 @import "colors.css";
 
 * {
@@ -23,7 +24,7 @@ textarea {
 .button {
     font-size: 11px;
     font-weight: 600;
-    border-radius: 25px;
+    border-radius: 8px;
     transition: all 0.1s ease-in-out;
     cursor: pointer;
     text-transform: uppercase;
@@ -35,6 +36,7 @@ textarea {
 .button.primary {
     color: #fff;
     background: linear-gradient(#444, #333);
+    border: 0;
     box-shadow: 0 1px 6px rgba(0,0,0,.1);
 }
 
@@ -44,14 +46,14 @@ textarea {
 }
 
 .button.small {
-    padding: 6px 12px;
+    padding: 8px 14px;
 }
 
 input,
 textarea {
-    height: 34px;
-    box-shadow: inset -2px 2px 6px #eee;
-    border: 1px solid #111;
+    height: 38px;
+    box-shadow: inset -2px 2px 6px #fafafa;
+    border: 1px solid #bbb;
     border-radius: 6px;
     padding-left: 15px;
     padding-right: 15px;

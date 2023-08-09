@@ -4,17 +4,13 @@
 
 .text-field.viewable-field {
     display: inline-block;
-    height: 30px;
-    line-height: 28px;
+    height: 34px;
+    line-height: 32px;
     border: 1px solid #ddd;
     border-radius: 6px;
     transition: all 0.15s ease-in-out;
     padding-left: 15px;
     padding-right: 15px;
-}
-
-.text-field.viewable-field:hover {
-    border: 1px solid #111;
 }
 
 .text-field.viewable-field span {
@@ -27,12 +23,12 @@
 .text-field.editable-field .prefix {
     display: block;
     width: auto;
-    height: 34px;
-    line-height: 34px;
+    height: 38px;
+    line-height: 36px;
     text-transform: initial;
-    border-top: 1px solid #111;
-    border-left: 1px solid #111;
-    border-bottom: 1px solid #111;
+    border-top: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
     background: #f7f7f7;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
@@ -48,12 +44,12 @@
 .text-field.editable-field .suffix {
     display: block;
     width: auto;
-    height: 34px;
-    line-height: 34px;
+    height: 38px;
+    line-height: 36px;
     text-transform: initial;
-    border-top: 1px solid #111;
-    border-right: 1px solid #111;
-    border-bottom: 1px solid #111;
+    border-top: 1px solid #bbb;
+    border-right: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
     background: #f7f7f7;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
@@ -64,7 +60,7 @@
 .text-field input {
     display: block;
     width: 100%;
-    height: 34px;
+    height: 38px;
     outline: none;
 }
 

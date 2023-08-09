@@ -22,7 +22,8 @@
       (for [{:keys [editable identifier]} fields]
         [:div.field
          (editable
-           (data/content-item-field content-id (name identifier)))])]]))
+           {:value (:value (data/content-item-field content-id (name identifier)))
+            :content-id content-id})])]]))
 
 (defn handler [request]
   (let [shape-identifier (-> request :path-params :identifier)

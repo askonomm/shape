@@ -1,0 +1,17 @@
+.date-field.viewable-field {
+    display: inline-block;
+    font-size: 13px;
+    height: 34px;
+    line-height: 32px;
+    color: #111;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    transition: all 0.15s ease-in-out;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.date-field.viewable-field i {
+    margin-right: 10px;
+}

@@ -4,18 +4,17 @@
 
 (defn- list-shapes [request]
   (for [shape (shapes/compute-shapes request)]
-    [:a {:href (str "/admin/content/" (-> shape :identifier name))
-         :class (when (= (-> request :path-params :identifier) (-> shape :identifier name))
-                  "active")}
-     (:name shape)]))
+    [:div.menu-item
+     [:a.button.primary.small {:href (str "/admin/content/" (-> shape :identifier name))
+                               :class (when (= (-> request :path-params :identifier) (-> shape :identifier name))
+                                        "active")}
+      (:name shape)]]))
 
 (defn sidebar
   [request]
   [:div.sidebar
+   [:div.logo]
    [:div.menu
-    [:a {:href "/admin"
-         :class (when (empty? (:path-params request))
-                  "active")} "Dashboard"]
     (list-shapes request)]
    [:div.secondary-menu
-    [:a {:href "/admin/logout"} "Log out"]]])
+    [:a.button.secondary.small {:href "/admin/logout"} "Log out"]]])

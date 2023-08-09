@@ -16,10 +16,10 @@
      (for [item content-items]
        [:a {:href (str "/admin/content/" shape-identifier "/item/" (:id item))}
         (for [field list-view-fields]
-          (let [{:keys [field-value]} (->> item :fields (filter #(= (:identifier %) (-> field :identifier name))) first)
-                value (if (string/blank? field-value)
+          (let [{:keys [value]} (->> item :fields (filter #(= (:identifier %) (-> field :identifier name))) first)
+                value (if (string/blank? value)
                         (or (:placeholder field) "")
-                        field-value)
+                        value)
                 viewable (:viewable field)]
              [:div.field
               (viewable {:value value})]))])]))
