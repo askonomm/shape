@@ -1,6 +1,6 @@
 (ns shape.routes.admin
   (:require
-   [shape.handlers.admin.dashboard :as dashboard]
+   [shape.handlers.admin.main :as main]
    [shape.handlers.admin.login :as login]
    [shape.handlers.admin.logout :as logout]
    [shape.handlers.admin.setup :as setup]
@@ -13,10 +13,10 @@
    [shape.handlers.admin.api.content-item.update-field :as update-field]
    [shape.middlewares :as middlewares]))
 
-(def ^:private dashboard
+(def ^:private main
   {:get {:responses {200 {:body string?}}
          :middleware [middlewares/is-authenticated?]
-         :handler dashboard/handler}})
+         :handler main/handler}})
 
 (def ^:private setup
   {:get {:responses {200 {:body string?}}
@@ -89,7 +89,7 @@
           :handler update-field/handler}})
 
 (def routes
-  [["" dashboard]
+  [["" main]
    ["/setup" setup]
    ["/login" login]
    ["/logout" logout]

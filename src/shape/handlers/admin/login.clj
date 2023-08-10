@@ -6,7 +6,7 @@
      [shape.data :as data]
      [clojure.string :as string]))
 
-(defn- view-handler-page [request]
+(defn- content [request]
   [:div.wall-content
     [:div.logo]
     [:h2 "Log in"]
@@ -33,7 +33,7 @@
 
 (defn view-handler [request]
   (->admin-page
-   (view-handler-page request)
+   (content request)
    {:css ["shape/css/wall"]
     :body-class "wall"}))
 

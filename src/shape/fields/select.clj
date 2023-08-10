@@ -4,13 +4,16 @@
 
 (defn- editable
   "Render a select field as an editable view."
-  [{:keys [identifier content-id options] :as opts}]
+  [{:keys [identifier content-id options value] :as opts}]
   [:label (:name opts)
    [:div.select-field.editable-field
     [:select {:name (name identifier)
               :hx-post (str "/admin/api/content-item/" content-id "/update-field")
-              :hx-trigger "input changed delay:250ms"}
-     (for [option options]
+              :hx-trigger "input changed delay:250ms"
+              :hx-swap "none"}
+     (when-not (string/blank? value)
+       [:option {:value value} value])
+     (for [option (->> options (filter #(not= % value)))]
        [:option {:value option} option])]]])
 
 (defn- viewable

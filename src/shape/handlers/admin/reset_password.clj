@@ -3,7 +3,7 @@
    [shape.handlers.utils :refer [->admin-page ->redirect]]
    [shape.data :as data]))
 
-(defn- view-handler-page [request]
+(defn- content [request]
   (let [token (-> request :path-params :token)]
     [:div.wall-content
      [:div.logo]
@@ -25,7 +25,7 @@
 
 (defn view-handler [request]
   (->admin-page
-   (view-handler-page request)
+   (content request)
    {:css ["shape/css/wall"]
     :body-class "wall"}))
 

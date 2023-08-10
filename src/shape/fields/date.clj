@@ -25,7 +25,7 @@
           date (.format sdf (Date. epoch))]
       [:div.date-field.viewable-field
        [:span.value
-        [:i.fa.fa-clock]
+        [:i.fa.fa-calendar]
         date]])))
 
 (defn date

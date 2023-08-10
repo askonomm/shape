@@ -6,22 +6,23 @@
    [shape.data :as data]
    [shape.handlers.utils :refer [->admin-page smtp-config]]))
 
-(defn- view-handler-page [request]
+(defn- content [request]
   [:div.wall-content
-    [:h2 "Forgot Password?"]
-    [:p "We should get that fixed"]
-    [:form {:method "post"}
-     (when-let [error (:error request)]
-       [:div.error error])
-     (cond
-       (true? (-> request :message-sent?))
-       [:p "Check your e-mail for a link to change your password."]
+   [:div.logo]
+   [:h2 "Forgot Password?"]
+   [:p "We should get that fixed"]
+   [:form {:method "post"}
+    (when-let [error (:error request)]
+      [:div.error error])
+    (cond
+      (true? (-> request :message-sent?))
+      [:p "Check your e-mail for a link to change your password."]
 
-       (false? (-> request :message-sent?))
-       [:p "Something went wrong sending the e-mail. Please contact the web administrator."]
+      (false? (-> request :message-sent?))
+      [:p "Something went wrong sending the e-mail. Please contact the web administrator."]
 
-       :else
-       (list
+      :else
+      (list
         [:label
           "E-mail"
           [:input {:type "email"
@@ -33,8 +34,8 @@
 
 (defn view-handler [request]
   (->admin-page
-   (view-handler-page request)
-   {:css ["wall"]
+   (content request)
+   {:css ["shape/css/wall"]
     :body-class "wall"}))
 
 (defn send-email [email token url]
