@@ -1,8 +1,8 @@
 .select-field.viewable-field {
     display: inline-block;
-    font-size: 13px;
-    height: 34px;
-    line-height: 32px;
+    font-size: 12px;
+    height: 26px;
+    line-height: 24px;
     color: #111;
     background: #fafafa;
     border: 1px solid #ddd;
@@ -12,8 +12,8 @@
     white-space: nowrap;
     flex-basis: fit-content;
     overflow: hidden;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .select-field.viewable-field i {
