@@ -11,6 +11,16 @@
      {:value (:value (data/content-item-field content-id (name identifier)))
       :content-id content-id})])
 
+(defn- content-editor [fields content-id]
+  [:div.content-editor
+   (for [field fields]
+     (if (vector? field)
+       [:div.horizontal-fields
+        (for [{:keys [editable identifier]} field]
+          (editable-field editable identifier content-id))]
+       (let [{:keys [editable identifier]} field]
+         (editable-field editable identifier content-id))))])
+
 (defn- content [request]
   (let [shape-identifier (-> request :path-params :identifier)
         shape-identifier-kw (keyword shape-identifier)
@@ -18,21 +28,13 @@
         shape (shapes/first-by-identifier request shape-identifier-kw)
         fields (:fields shape)]
     [:div.content
-     [:div.inner-content
-      [:div.header
-       [:h1 (str "Edit "  (:singular-name shape))]
-       [:a.button.warning.small
-        {:href (str "/admin/content/" shape-identifier "/item/" content-id "/delete")
-         :onclick "return confirm('Are you sure you want to delete this item?');"}
-        (str "Delete " (:singular-name shape))]]
-      [:div.content-editor
-       (for [field fields]
-         (if (vector? field)
-           [:div.horizontal-fields
-            (for [{:keys [editable identifier]} field]
-              (editable-field editable identifier content-id))]
-           (let [{:keys [editable identifier]} field]
-             (editable-field editable identifier content-id))))]]]))
+     [:div.header
+      [:h1 (str "Edit "  (:singular-name shape))]
+      [:a.button.warning.small
+       {:href (str "/admin/content/" shape-identifier "/item/" content-id "/delete")
+        :onclick "return confirm('Are you sure you want to delete this item?');"}
+       (str "Delete " (:singular-name shape))]]
+     (content-editor fields content-id)]))
 
 (defn handler [request]
   (let [shape-identifier (-> request :path-params :identifier)
