@@ -45,4 +45,6 @@
                           (Integer/parseInt (env "PORT"))
                           3999)
                   :join? false})))
-  
+
+(defn -main [& args]
+  (run args))

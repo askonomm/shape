@@ -1,6 +1,6 @@
-(ns themes.default.config
+(ns site.config
   (:require
-   [themes.default.shapes :as shapes]))
+   [site.shapes :as shapes]))
 
 (def config
   {:shapes [shapes/blog-post

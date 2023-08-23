@@ -1,4 +1,4 @@
-(ns themes.default.utils
+(ns site.utils
   (:import (java.text SimpleDateFormat)
            (java.util Date)))
 

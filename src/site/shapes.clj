@@ -1,10 +1,10 @@
-(ns themes.default.shapes
+(ns site.shapes
   (:require
     [shape.fields.text :refer [text]]
     [shape.fields.textarea :refer [textarea]]
     [shape.fields.date :refer [date]]
     [shape.fields.select :refer [select]]
-    [themes.default.utils :as utils]))
+    [site.utils :as utils]))
 
 (defn blog-post [{:site/keys [url]}]
   {:identifier :post

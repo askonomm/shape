@@ -1,13 +1,13 @@
 (ns shape.shapes
   (:require
-    [config :refer [theme]]
+    [site.config :refer [config]]
     [shape.utils :as utils]))
 
 (defn- compose-shape-data [request]
   {:site/url (utils/request->url request)})
 
 (defn compute-shapes [request]
-  (->> (:shapes theme)
+  (->> (:shapes config)
        (map (fn [shape]
               (if (fn? shape)
                 (-> request
@@ -15,11 +15,13 @@
                     shape)
                 shape)))))
 
+; todo: use transducers
 (defn first-by-identifier [request identifier]
   (->> (compute-shapes request)
        (filter #(= (:identifier %) identifier))
        first))
 
+; todo: use transducers
 (defn js-injections-by-identifier [request identifier]
   (->> (compute-shapes request)
        (filter #(= (:identifier %) identifier))
@@ -32,6 +34,7 @@
        distinct
        (into [])))
 
+; todo: use transducers
 (defn css-injections-by-identifier [request identifier]
   (->> (compute-shapes request)
        (filter #(= (:identifier %) identifier))
